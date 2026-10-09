@@ -1,0 +1,24 @@
+{
+    "name": "sharzhukov/lab-ui",
+    "description": "Design system for Sharzhukov's Laboratory",
+    "type": "library",
+    "license": "MIT",
+    "require": {
+        "php": "^8.2",
+        "illuminate/support": "^11.0|^12.0|^13.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Sharzhukov\\LabUi\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Sharzhukov\\LabUi\\LabUiServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

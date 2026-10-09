@@ -1,0 +1,1 @@
+<span {{ $attributes->class(['lab-eyebrow']) }}>{{ $slot }}</span>
