@@ -32,7 +32,7 @@
                     <div class="brutal-cookie-pref-title">Analytics</div>
                     <div class="brutal-cookie-pref-desc">Helps us understand how you use the site.</div>
                 </div>
-                <label class="brutal-toggle"><input type="checkbox" id="cookie-analytics" checked><span></span></label>
+                <label class="brutal-toggle"><input type="checkbox" id="cookie-analytics"><span></span></label>
             </div>
 
             <div class="brutal-cookie-pref">
@@ -40,7 +40,7 @@
                     <div class="brutal-cookie-pref-title">Marketing</div>
                     <div class="brutal-cookie-pref-desc">Used to show you relevant content.</div>
                 </div>
-                <label class="brutal-toggle"><input type="checkbox" id="cookie-marketing" checked><span></span></label>
+                <label class="brutal-toggle"><input type="checkbox" id="cookie-marketing"><span></span></label>
             </div>
 
             <div style="display:flex;gap:12px;margin-top:24px;justify-content:flex-end;">
@@ -105,6 +105,14 @@
     };
 
     window.labCookiePreferences = function() {
+        document.getElementById('cookie-consent').style.display = 'block';
+        document.getElementById('cookie-prefs').style.display = 'flex';
+    };
+
+    // Публичная функция для вызова из footer (Cookie settings).
+    // Открывает модалку Preferences, даже если баннер уже был закрыт.
+    window.labCookieOpen = function() {
+        document.getElementById('cookie-consent').style.display = 'block';
         document.getElementById('cookie-prefs').style.display = 'flex';
     };
 

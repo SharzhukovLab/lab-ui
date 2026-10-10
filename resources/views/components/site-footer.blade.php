@@ -57,6 +57,7 @@
                     <li><a href="https://main.sharzhukov.com/news">News</a></li>
                     <li><a href="https://wiki-main.sharzhukov.com">Wiki</a></li>
                     <li><a href="https://go-main.sharzhukov.com">Short links</a></li>
+                    <li><a href="#" onclick="event.preventDefault(); labCookieOpen();">Cookie settings</a></li>
                 </ul>
             </div>
             <div class="brutal-footer-col">
