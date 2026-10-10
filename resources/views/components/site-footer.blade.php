@@ -99,6 +99,8 @@
 
         <x-lab::newsletter-signup />
 
+        <x-lab::contact-cta />
+
         <div class="brutal-footer-bottom">
             <span>{{ $footerCopy }}</span>
             <span>{{ $footerTagline }}</span>
