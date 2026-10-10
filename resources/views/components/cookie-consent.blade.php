@@ -75,7 +75,6 @@
             '; path=/; SameSite=Lax' + secure;
     }
 
-    // Возвращает {necessary, analytics, marketing, action} или null
     function getSavedConsent() {
         var raw = readCookie(COOKIE_NAME);
         if (!raw) return null;
@@ -83,7 +82,6 @@
             var parsed = JSON.parse(raw);
             if (parsed && typeof parsed === 'object') return parsed;
         } catch (e) {
-            // legacy format (просто "1.0") — считаем necessary-only
             return { necessary: true, analytics: false, marketing: false, action: 'legacy' };
         }
         return null;
@@ -136,7 +134,6 @@
         if (prefs) prefs.style.display = 'none';
     }
 
-    // ─── Public API ───
     window.labCookieAction = function(action) {
         var categories = { necessary: true, analytics: false, marketing: false };
         if (action === 'accept_all') {
@@ -158,7 +155,6 @@
         if (p) p.style.display = 'flex';
     };
 
-    // Alias для вызова из footer
     window.labCookieOpen = window.labCookiePreferences;
 
     window.labCookieClosePrefs = function() {
@@ -181,7 +177,6 @@
         submitConsent('custom', categories);
     };
 
-    // ─── Init on load ───
     document.addEventListener('DOMContentLoaded', function() {
         var saved = getSavedConsent();
         var b = document.getElementById('cookie-consent');
