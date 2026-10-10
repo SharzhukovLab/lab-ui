@@ -1,0 +1,11 @@
+.lab-prose { font-size: 16px; line-height: 1.7; color: var(--lab-fg); }
+.lab-prose h2 { margin-top: 2em; font-size: 1.5rem; }
+.lab-prose h3 { margin-top: 1.6em; font-size: 1.2rem; }
+.lab-prose p { margin: 1em 0; }
+.lab-prose ul, .lab-prose ol { padding-left: 1.5em; margin: 1em 0; }
+.lab-prose li { margin: 0.4em 0; }
+.lab-prose code { background: var(--lab-bg-elevated); padding: 2px 6px; border-radius: 6px; font-family: var(--font-mono); font-size: 0.9em; }
+.lab-prose pre { background: #1d1d1f; color: #f5f5f7; padding: 16px 20px; border-radius: 12px; overflow-x: auto; font-family: var(--font-mono); font-size: 14px; }
+.lab-prose blockquote { border-left: 3px solid #ff5c1f; padding-left: 16px; color: var(--lab-fg-muted); font-style: italic; }
+.lab-prose img { border-radius: 12px; max-width: 100%; }
+.lab-prose a { color: #ea4a0f; text-decoration: underline; text-underline-offset: 3px; }
