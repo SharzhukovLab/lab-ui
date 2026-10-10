@@ -559,22 +559,22 @@ svg.lucide { color: var(--brutal-accent); display: inline-block; vertical-align:
 /* Ecosystem cards */
 .brutal-eco-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 16px;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 14px;
     margin-top: 16px;
 }
 .brutal-eco-card {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    gap: 16px;
-    padding: 18px 22px;
+    gap: 14px;
+    padding: 16px 18px;
     border: 2px solid var(--brutal-border);
     background: var(--lab-bg);
     text-decoration: none;
     color: inherit;
     transition: all .15s ease;
     box-shadow: 4px 4px 0 var(--brutal-shadow);
+    position: relative;
 }
 .dark .brutal-eco-card { background: var(--lab-bg-elevated); }
 .brutal-eco-card:hover {
@@ -583,8 +583,8 @@ svg.lucide { color: var(--brutal-accent); display: inline-block; vertical-align:
     background: rgba(255, 92, 31, 0.04);
 }
 .brutal-eco-card-icon {
-    width: 36px;
-    height: 36px;
+    width: 38px;
+    height: 38px;
     border: 2px solid var(--brutal-border);
     background: var(--brutal-accent);
     display: flex;
@@ -592,46 +592,45 @@ svg.lucide { color: var(--brutal-accent); display: inline-block; vertical-align:
     justify-content: center;
     flex-shrink: 0;
 }
-.brutal-eco-card-icon svg { width: 18px; height: 18px; color: #fff; }
+.brutal-eco-card-icon svg { width: 20px; height: 20px; color: #fff; }
 .brutal-eco-card-body {
     flex: 1;
     min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
 }
 .brutal-eco-card-title {
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 800;
     letter-spacing: -0.01em;
     color: var(--brutal-border);
     margin: 0;
-    line-height: 1.2;
+    line-height: 1.25;
 }
-.brutal-eco-card-url {
+.brutal-eco-card-host {
     font-family: var(--font-mono);
     font-size: 11px;
-    font-weight: 600;
-    color: var(--lab-fg);
-    background: var(--brutal-border);
-    padding: 3px 10px;
-    letter-spacing: 0.02em;
-    white-space: nowrap;
-    flex-shrink: 0;
-}
-.dark .brutal-eco-card-url {
-    background: var(--lab-bg-sunken);
+    font-weight: 500;
     color: var(--lab-fg-muted);
+    line-height: 1.3;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 .brutal-eco-card-arrow {
-    font-size: 14px;
-    color: var(--brutal-border);
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--lab-fg-subtle);
     flex-shrink: 0;
-    opacity: 0.5;
     transition: all .15s ease;
+    align-self: flex-start;
+    margin-top: -2px;
 }
 .brutal-eco-card:hover .brutal-eco-card-arrow {
-    opacity: 1;
     color: var(--brutal-accent);
+    transform: translate(1px, -1px);
 }
-
 /* Footer link columns */
 .brutal-footer-cols {
     display: grid;
