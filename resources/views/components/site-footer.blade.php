@@ -86,6 +86,10 @@
             </div>
         </div>
 
+        
+        <hr class="brutal-footer-divider">
+
+        <x-lab::newsletter-signup />
         <div class="brutal-footer-bottom">
             <span>© {{ date('Y') }} SHARZHUKOV'S LAB</span>
             <span>MADE IN EU · EST. 2026</span>

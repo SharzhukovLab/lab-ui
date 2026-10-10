@@ -1000,3 +1000,9 @@ select.lab-select,
 .card-row {
     padding: 12px 0;
 }
+/* ── Account main content — responsive ──────────── */
+@media (max-width: 640px) {
+    body main[style*="max-width:1200px"] {
+        padding: 24px 16px 48px !important;
+    }
+}
