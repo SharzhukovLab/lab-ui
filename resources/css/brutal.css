@@ -1947,3 +1947,77 @@ body.lab-modal-open { overflow: hidden; }
 .brutal-nav-bell-foot a { font-family: var(--font-mono); font-size: 11px; font-weight: 700; letter-spacing: 0.08em; color: var(--brutal-accent); text-transform: uppercase; text-decoration: none; }
 .brutal-nav-bell-foot a:hover { text-decoration: underline; }
 @media (max-width: 899px) { .brutal-nav-actions > .brutal-nav-bell { display: none; } }
+/* ── Lab alert: brutal overrides ── */
+.lab-alert {
+    position: relative;
+    padding: 16px 20px 16px 24px;
+    border: 2px solid var(--brutal-border);
+    border-left-width: 8px;
+    border-radius: 0;
+    box-shadow: 4px 4px 0 var(--brutal-shadow);
+    font-family: var(--font-sans);
+    font-size: 14px;
+    line-height: 1.55;
+    margin: 0;
+    background: var(--lab-bg);
+    color: var(--lab-fg);
+}
+.dark .lab-alert { background: var(--lab-bg-elevated); }
+
+.lab-alert ul { margin: 0; padding-left: 20px; }
+.lab-alert li + li { margin-top: 4px; }
+
+.lab-alert--success {
+    border-left-color: #16a34a;
+    background: #f0fdf4;
+    color: #052e16;
+}
+.dark .lab-alert--success {
+    border-left-color: #22c55e;
+    background: rgba(22, 163, 74, .08);
+    color: #bbf7d0;
+}
+
+.lab-alert--danger {
+    border-left-color: #dc2626;
+    background: #fef2f2;
+    color: #450a0a;
+}
+.dark .lab-alert--danger {
+    border-left-color: #ef4444;
+    background: rgba(220, 38, 38, .08);
+    color: #fecaca;
+}
+
+.lab-alert--warning {
+    border-left-color: var(--brutal-accent);
+    background: #fff7ed;
+    color: #431407;
+}
+.dark .lab-alert--warning {
+    border-left-color: var(--brutal-accent);
+    background: rgba(255, 92, 31, .08);
+    color: #fed7aa;
+}
+
+.lab-alert--info {
+    border-left-color: #2563eb;
+    background: #eff6ff;
+    color: #0c1e42;
+}
+.dark .lab-alert--info {
+    border-left-color: #60a5fa;
+    background: rgba(37, 99, 235, .08);
+    color: #bfdbfe;
+}
+
+.lab-alert--accent {
+    border-left-color: var(--brutal-accent);
+    background: #fff7ed;
+    color: #431407;
+}
+.dark .lab-alert--accent {
+    border-left-color: var(--brutal-accent);
+    background: rgba(255, 92, 31, .08);
+    color: #fed7aa;
+}
