@@ -2250,3 +2250,79 @@ body.lab-modal-open { overflow: hidden; }
   align-items: center;
   margin-top: 8px;
 }
+
+/* ---- Reactions ---- */
+.lab-reactions {
+  display: inline-flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.lab-reactions--bar {
+  padding: 12px 0;
+  border-top: 3px solid var(--brutal-border);
+  border-bottom: 3px solid var(--brutal-border);
+  width: 100%;
+  margin: 32px 0;
+}
+.lab-reaction {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 36px;
+  padding: 0 12px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .04em;
+  color: var(--lab-fg);
+  background: var(--lab-bg-elevated);
+  border: 2px solid var(--brutal-border);
+  box-shadow: 3px 3px 0 var(--brutal-border);
+  cursor: pointer;
+  transition: transform .12s ease, box-shadow .12s ease, background .12s ease, color .12s ease;
+  user-select: none;
+}
+.lab-reaction:hover {
+  transform: translate(-1px,-1px);
+  box-shadow: 4px 4px 0 var(--brutal-border);
+}
+.lab-reaction:active {
+  transform: translate(0,0);
+  box-shadow: 2px 2px 0 var(--brutal-border);
+}
+.lab-reaction[aria-pressed="true"] {
+  background: var(--brutal-accent, #ff5c1f);
+  color: #0a0b12;
+}
+.lab-reaction[aria-pressed="true"] .lab-reaction__count {
+  color: #0a0b12;
+  font-weight: 900;
+}
+.lab-reaction__emoji {
+  font-size: 16px;
+  line-height: 1;
+  filter: grayscale(0);
+}
+.lab-reaction__count {
+  font-variant-numeric: tabular-nums;
+  color: var(--lab-fg-muted);
+  min-width: 12px;
+  text-align: center;
+}
+.lab-reaction[data-count="0"] .lab-reaction__count {
+  opacity: .35;
+}
+.lab-reaction.is-pulse {
+  animation: lab-reaction-pop .28s ease;
+}
+@keyframes lab-reaction-pop {
+  0%   { transform: scale(1); }
+  45%  { transform: scale(1.14); }
+  100% { transform: scale(1); }
+}
+
+/* В паре с comments: реакции чуть выше заголовка */
+.lab-comments + .lab-reactions--bar,
+.lab-reactions--bar + .lab-comments {
+  margin-top: 0;
+}
