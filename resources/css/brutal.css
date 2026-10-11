@@ -1920,3 +1920,30 @@ body.lab-modal-open { overflow: hidden; }
     .lab-modal-title { font-size: 18px; }
     .lab-modal-actions .lab-btn { flex: 1 1 auto; justify-content: center; }
 }
+/* ── Nav: notifications bell ── */
+.brutal-nav-actions > .brutal-nav-bell { position: relative; display: inline-flex; width: 42px; height: 42px; min-width: 42px; }
+.brutal-nav-bell > .brutal-nav-bell-btn { width: 100%; height: 100%; padding: 0; margin: 0; display: inline-flex; align-items: center; justify-content: center; box-sizing: border-box; border: 2px solid var(--brutal-border); border-radius: 0; background: var(--lab-bg); color: var(--brutal-border); box-shadow: 2px 2px 0 var(--brutal-shadow); cursor: pointer; transition: transform .12s ease, box-shadow .12s ease, background .12s ease, color .12s ease; text-decoration: none; position: relative; }
+.brutal-nav-bell > .brutal-nav-bell-btn:hover { transform: translate(-2px, -2px); box-shadow: 4px 4px 0 var(--brutal-shadow); background: var(--brutal-accent); color: #fff; }
+.brutal-nav-bell > .brutal-nav-bell-btn svg { display: block; }
+.brutal-nav-bell-badge { position: absolute; top: -6px; right: -6px; min-width: 18px; height: 18px; padding: 0 4px; background: var(--brutal-accent); color: #fff; border: 2px solid var(--brutal-border); font-family: var(--font-mono); font-size: 10px; font-weight: 800; line-height: 14px; text-align: center; display: none; }
+.brutal-nav-bell-badge[data-count]:not([data-count="0"]) { display: inline-block; }
+.brutal-nav-bell-dropdown { display: none; position: absolute; top: calc(100% + 8px); right: 0; min-width: 340px; max-width: 92vw; max-height: 70vh; overflow-y: auto; background: var(--lab-bg); border: 2px solid var(--brutal-border); box-shadow: 6px 6px 0 var(--brutal-shadow); z-index: 100; padding: 0; }
+.dark .brutal-nav-bell-dropdown { background: var(--lab-bg-elevated); }
+.brutal-nav-bell:hover > .brutal-nav-bell-dropdown,
+.brutal-nav-bell[data-open="true"] > .brutal-nav-bell-dropdown { display: block; }
+.brutal-nav-bell-dropdown::before { content: ''; position: absolute; top: -14px; left: 0; right: 0; height: 14px; }
+.brutal-nav-bell-head { padding: 12px 16px; border-bottom: 2px solid var(--brutal-border); display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+.brutal-nav-bell-head-title { font-family: var(--font-mono); font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--brutal-border); }
+.brutal-nav-bell-mark-all { background: transparent; border: 0; font-family: var(--font-mono); font-size: 10px; font-weight: 700; letter-spacing: 0.08em; color: var(--brutal-accent); text-transform: uppercase; cursor: pointer; padding: 0; }
+.brutal-nav-bell-mark-all:hover { text-decoration: underline; }
+.brutal-nav-bell-item { display: block; padding: 12px 16px; border-bottom: 1px solid rgba(0,0,0,.08); text-decoration: none; color: inherit; transition: background .12s ease; }
+.brutal-nav-bell-item:hover { background: var(--lab-bg-sunken); }
+.brutal-nav-bell-item[data-unread="1"] { border-left: 4px solid var(--brutal-accent); padding-left: 12px; }
+.brutal-nav-bell-item-title { font-family: var(--font-sans); font-weight: 800; font-size: 13px; color: var(--brutal-border); margin-bottom: 3px; display: flex; justify-content: space-between; gap: 8px; }
+.brutal-nav-bell-item-time { font-family: var(--font-mono); font-size: 10px; color: var(--lab-fg-muted); font-weight: 500; flex-shrink: 0; }
+.brutal-nav-bell-item-msg { font-size: 12px; color: var(--lab-fg-muted); line-height: 1.4; margin: 0; }
+.brutal-nav-bell-empty { padding: 32px 16px; text-align: center; color: var(--lab-fg-muted); font-size: 13px; font-family: var(--font-mono); }
+.brutal-nav-bell-foot { padding: 10px 16px; text-align: center; border-top: 2px solid var(--brutal-border); background: var(--lab-bg-sunken); }
+.brutal-nav-bell-foot a { font-family: var(--font-mono); font-size: 11px; font-weight: 700; letter-spacing: 0.08em; color: var(--brutal-accent); text-transform: uppercase; text-decoration: none; }
+.brutal-nav-bell-foot a:hover { text-decoration: underline; }
+@media (max-width: 899px) { .brutal-nav-actions > .brutal-nav-bell { display: none; } }
