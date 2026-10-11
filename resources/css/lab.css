@@ -593,3 +593,12 @@ a:hover { color: #c2410c; }
     border-color: rgba(37, 99, 235, .3);
     color: #93c5fd;
 }
+/* ─── Text selection ─── */
+::selection {
+    background: #ff5c1f;
+    color: #ffffff;
+}
+::-moz-selection {
+    background: #ff5c1f;
+    color: #ffffff;
+}
