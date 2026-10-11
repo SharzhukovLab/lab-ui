@@ -3,3 +3,7 @@
 composer.lock
 .DS_Store
 .phpunit.result.cache
+
+# local backups
+*.bak
+*.pre-*.bak
