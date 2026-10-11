@@ -40,6 +40,12 @@
         document.addEventListener('click', function (e) {
             if (!bell.contains(e.target)) { isOpen = false; bell.setAttribute('data-open', 'false'); }
         });
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape' && isOpen) {
+                isOpen = false;
+                bell.setAttribute('data-open', 'false');
+            }
+        });
         var markAll = bell.querySelector('[data-nav-bell-mark-all]');
         if (markAll) markAll.addEventListener('click', function (e) {
             e.preventDefault(); e.stopPropagation();

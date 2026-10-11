@@ -97,7 +97,7 @@
                             @if($me->username)
                                 <a class="brutal-nav-dropdown-item" href="{{ $mainBase }}/u/{{ $me->username }}">Public profile →</a>
                             @endif
-                            <a class="brutal-nav-dropdown-item" href="{{ $accountBase }}/settings">Settings →</a>
+                            <a class="brutal-nav-dropdown-item" href="{{ $accountBase }}/profile">Profile →</a>
 
                             <div class="brutal-nav-dropdown-divider"></div>
 
@@ -154,7 +154,7 @@
                 @if($me->username)
                     <a href="{{ $mainBase }}/u/{{ $me->username }}" class="brutal-nav-drawer-link">Public profile →</a>
                 @endif
-                <a href="{{ $accountBase }}/settings" class="brutal-nav-drawer-link">Settings →</a>
+                <a href="{{ $accountBase }}/profile" class="brutal-nav-drawer-link">Profile →</a>
 
                 <form method="POST" action="{{ $accountBase }}/logout" style="margin:8px 24px 0;">
                     @csrf
