@@ -1,29 +1,43 @@
 @props([
-    'url',           // что кодировать (обязательно)
-    'label' => null, // подпись под QR (опционально)
-    'size' => 220,   // размер превью QR
-    'filename' => 'qr', // базовое имя для скачивания
+    'url',              // что кодировать
+    'label' => null,    // подпись
+    'size' => 220,      // размер preview (квадрат)
+    'filename' => 'qr', // базовое имя
+    'logo' => true,     // рисовать лого в центре
+    'logoUrl' => '/img/branding/core-white.png',
 ])
 
-<div class="qr-download" data-qr data-url="{{ $url }}" data-filename="{{ $filename }}">
+<div class="qr-download"
+     data-qr
+     data-url="{{ $url }}"
+     data-filename="{{ $filename }}"
+     data-logo="{{ $logo ? '1' : '0' }}"
+     data-logo-url="{{ $logoUrl }}"
+     style="display:inline-flex;flex-direction:column;align-items:center;gap:16px;">
+
+    {{-- Preview --}}
     <div class="qr-download__preview" style="
         display:inline-block;
-        padding:12px;
-        background:#fff;
-        border:2px solid var(--brutal-border);
-        box-shadow:4px 4px 0 var(--brutal-shadow);
+        padding:14px;
+        background:#ffffff;
+        border:3px solid var(--brutal-border);
+        box-shadow:6px 6px 0 var(--brutal-shadow);
+        line-height:0;
     ">
-        {{-- canvas вставляется JS --}}
-        <canvas class="qr-download__canvas" width="{{ $size }}" height="{{ $size }}" style="display:block;"></canvas>
+        <canvas class="qr-download__canvas"
+                width="{{ $size }}"
+                height="{{ $size }}"
+                style="display:block;"></canvas>
     </div>
 
     @if($label)
-        <p style="margin:10px 0 0;font-family:var(--font-mono);font-size:12px;color:var(--lab-fg-muted);text-align:center;">
+        <p style="margin:0;font-family:var(--font-mono);font-size:12px;color:var(--lab-fg-muted);text-align:center;word-break:break-all;max-width:280px;">
             {{ $label }}
         </p>
     @endif
 
-    <div style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap;">
+    {{-- Actions --}}
+    <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;">
         <button type="button" class="lab-btn lab-btn--primary lab-btn--sm" data-qr-download="png">
             DOWNLOAD PNG
         </button>
