@@ -2477,3 +2477,12 @@ body.lab-modal-open { overflow: hidden; }
   transform: translate(-2px, -2px) !important;
   box-shadow: 4px 4px 0 var(--brutal-shadow) !important;
 }
+
+/* ── Theme toggle: только одна иконка в любой теме (override display: block !important) ── */
+/* Light theme (html без .dark) — показываем только moon (нажми → станет dark) */
+html:not(.dark) .brutal-nav-actions > .lab-theme-toggle .icon-sun  { display: none !important; }
+html:not(.dark) .brutal-nav-actions > .lab-theme-toggle .icon-moon { display: block !important; }
+
+/* Dark theme — показываем только sun (нажми → станет light) */
+html.dark       .brutal-nav-actions > .lab-theme-toggle .icon-sun  { display: block !important; }
+html.dark       .brutal-nav-actions > .lab-theme-toggle .icon-moon { display: none !important; }
