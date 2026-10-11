@@ -2550,3 +2550,22 @@ html.dark       .brutal-nav-actions > .lab-theme-toggle .icon-moon { display: no
   opacity: .15;
   margin: 16px 24px;
 }
+
+/* ── Burger: hide on desktop (override unification rule) ── */
+@media (min-width: 900px) {
+  .brutal-nav-actions > .brutal-nav-burger {
+    display: none !important;
+  }
+}
+/* ── Bell: hide on desktop? Нет, bell виден и на desktop ── */
+/* ── Bell dropdown: вернуть absolute на desktop (а не fixed) ── */
+@media (min-width: 900px) {
+  .brutal-nav-bell > .brutal-nav-bell-dropdown {
+    position: absolute !important;
+    top: calc(100% + 8px) !important;
+    left: auto !important;
+    right: 0 !important;
+    min-width: 340px !important;
+    max-width: 92vw !important;
+  }
+}
