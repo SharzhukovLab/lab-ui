@@ -4,7 +4,7 @@
     'size' => 220,      // размер preview (квадрат)
     'filename' => 'qr', // базовое имя
     'logo' => true,     // рисовать лого в центре
-    'logoUrl' => '/img/branding/core-white.png',
+    'logoUrl' => '/img/branding/qr-logo.png',
 ])
 
 <div class="qr-download"
