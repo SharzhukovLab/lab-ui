@@ -2326,3 +2326,18 @@ body.lab-modal-open { overflow: hidden; }
 .lab-reactions--bar + .lab-comments {
   margin-top: 0;
 }
+
+/* ---- Deleted comment marker ---- */
+.lab-comment--deleted {
+  border-style: dashed;
+  background: transparent;
+  box-shadow: 3px 3px 0 var(--brutal-border);
+}
+.lab-comment--deleted .lab-comment__body { opacity: .7; }
+.lab-comment__deleted {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-style: italic;
+  color: var(--lab-fg-muted);
+  letter-spacing: .04em;
+}
