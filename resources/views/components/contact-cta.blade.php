@@ -12,7 +12,7 @@
             </p>
         </div>
 
-        <a href="https://main.sharzhukov.com/contact" class="lab-btn lab-btn--primary" style="flex-shrink:0;">
+        <a href="https://sharzhukov.com/contact" class="lab-btn lab-btn--primary" style="flex-shrink:0;">
             SEND MESSAGE →
         </a>
     </div>

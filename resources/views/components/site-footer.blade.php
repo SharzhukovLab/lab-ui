@@ -6,10 +6,10 @@
 
     // ── Ecosystem cards (4 сайта) ──
     $sites = [
-        'main'    => ['label' => 'Main site',   'url' => 'https://main.sharzhukov.com',         'icon' => 'home',      'host' => 'main.sharzhukov.com'],
-        'account' => ['label' => 'Account',     'url' => 'https://account-main.sharzhukov.com', 'icon' => 'user',      'host' => 'account-main.sharzhukov.com'],
-        'wiki'    => ['label' => 'Wiki & Docs', 'url' => 'https://wiki-main.sharzhukov.com',    'icon' => 'book-open', 'host' => 'wiki-main.sharzhukov.com'],
-        'go'      => ['label' => 'Short Links', 'url' => 'https://go-main.sharzhukov.com',      'icon' => 'link',      'host' => 'go-main.sharzhukov.com'],
+        'main'    => ['label' => 'Main site',   'url' => 'https://sharzhukov.com',         'icon' => 'home',      'host' => 'sharzhukov.com'],
+        'account' => ['label' => 'Account',     'url' => 'https://account.sharzhukov.com', 'icon' => 'user',      'host' => 'account.sharzhukov.com'],
+        'wiki'    => ['label' => 'Wiki & Docs', 'url' => 'https://wiki.sharzhukov.com',    'icon' => 'book-open', 'host' => 'wiki.sharzhukov.com'],
+        'go'      => ['label' => 'Short Links', 'url' => 'https://go.sharzhukov.com',      'icon' => 'link',      'host' => 'go.sharzhukov.com'],
     ];
 
     // ── Колонки ссылок из БД ──

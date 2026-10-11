@@ -5,7 +5,7 @@
             <p class="brutal-cookie-text">
                 We use cookies to improve your experience. Necessary cookies are always on. You can accept all, reject optional, or choose preferences.
             </p>
-            <a href="https://main.sharzhukov.com/cookies" class="brutal-link-arrow" target="_blank">Cookie policy <span>→</span></a>
+            <a href="https://sharzhukov.com/cookies" class="brutal-link-arrow" target="_blank">Cookie policy <span>→</span></a>
         </div>
         <div class="brutal-cookie-actions">
             <button type="button" class="lab-btn lab-btn--secondary" onclick="labCookiePreferences()">PREFERENCES</button>
