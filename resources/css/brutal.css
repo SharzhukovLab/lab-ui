@@ -1029,3 +1029,50 @@ select.lab-select,
     font-size: 13px !important;
     height: 44px !important;
 }
+
+/* ─── Newsletter card: dark in light-theme, elevated in dark-theme ─── */
+.brutal-newsletter {
+    background: #0a0b12;
+    color: #f1f5f9;
+    padding: 40px;
+    border: 3px solid #0a0b12;
+    box-shadow: 8px 8px 0 #ff5c1f;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+    box-sizing: border-box;
+}
+@media (max-width: 768px) {
+    .brutal-newsletter {
+        grid-template-columns: 1fr;
+        padding: 28px 24px;
+        gap: 24px;
+    }
+}
+.dark .brutal-newsletter {
+    background: #12131c;      /* elevated — не сливается с фоном */
+    border-color: #ff5c1f;     /* видимая граница */
+    color: #f1f5f9;
+}
+.brutal-newsletter h2 {
+    color: #ffffff !important;
+}
+.brutal-newsletter p {
+    color: #94a3b8 !important;
+}
+.brutal-newsletter input[type="email"] {
+    background: #ffffff !important;
+    color: #0a0b12 !important;
+    border: 2px solid #ff5c1f !important;
+    padding: 12px 14px !important;
+    font-family: var(--font-mono) !important;
+    font-size: 13px !important;
+    height: 44px !important;
+    width: 100% !important;
+    box-sizing: border-box;
+    outline: none;
+}
+.brutal-newsletter input[type="email"]::placeholder {
+    color: #94a3b8;
+}
