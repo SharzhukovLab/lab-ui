@@ -2341,3 +2341,27 @@ body.lab-modal-open { overflow: hidden; }
   color: var(--lab-fg-muted);
   letter-spacing: .04em;
 }
+
+/* ── Navbell dropdown: корректное позиционирование ── */
+.brutal-nav-bell {
+  position: relative;
+}
+.brutal-nav-bell > .brutal-nav-bell-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  min-width: 320px;
+  max-width: 92vw;
+  max-height: 70vh;
+  overflow-y: auto;
+  background: var(--lab-bg);
+  border: 2px solid var(--brutal-border);
+  box-shadow: 6px 6px 0 var(--brutal-shadow);
+  z-index: 9999;
+  padding: 0;
+  display: none;
+}
+.brutal-nav-bell[data-open="true"] > .brutal-nav-bell-dropdown,
+.brutal-nav-bell:hover > .brutal-nav-bell-dropdown {
+  display: block;
+}

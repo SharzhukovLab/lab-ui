@@ -84,7 +84,7 @@
                                 @endif
                                 <div class="brutal-nav-dropdown-header-info">
                                     <div class="brutal-nav-dropdown-header-name">{{ $me->name }}</div>
-                                    <div class="brutal-nav-dropdown-header-username">@{{ $me->username }}</div>
+                                    <div class="brutal-nav-dropdown-header-username">{{ $me->username }}</div>
                                 </div>
                             </div>
 
@@ -144,7 +144,7 @@
                     @endif
                     <div class="brutal-nav-drawer-user-info">
                         <div class="brutal-nav-drawer-user-name">{{ $me->name }}</div>
-                        <div class="brutal-nav-drawer-user-username">@{{ $me->username }}</div>
+                        <div class="brutal-nav-drawer-user-username">{{ $me->username }}</div>
                     </div>
                 </div>
 
