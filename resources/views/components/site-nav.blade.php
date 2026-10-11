@@ -96,6 +96,7 @@
 
                             @if($me->username)
                                 <a class="brutal-nav-dropdown-item" href="{{ $mainBase }}/u/{{ $me->username }}">Public profile →</a>
+                                <a class="brutal-nav-dropdown-item" href="{{ $mainBase }}/feed">Feed →</a>
                             @endif
                             <a class="brutal-nav-dropdown-item" href="{{ $accountBase }}/profile">Profile →</a>
 
@@ -156,6 +157,7 @@
                         <a href="{{ $accountBase }}/notifications" class="brutal-nav-drawer-link">Notifications →</a>
                         @if($me->username)
                             <a href="{{ $mainBase }}/u/{{ $me->username }}" class="brutal-nav-drawer-link">Public profile →</a>
+                            <a href="{{ $mainBase }}/feed" class="brutal-nav-drawer-link">Feed →</a>
                         @endif
                         <a href="{{ $accountBase }}/profile" class="brutal-nav-drawer-link">Profile →</a>
 
