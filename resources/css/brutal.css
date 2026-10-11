@@ -1946,7 +1946,7 @@ body.lab-modal-open { overflow: hidden; }
 .brutal-nav-bell-foot { padding: 10px 16px; text-align: center; border-top: 2px solid var(--brutal-border); background: var(--lab-bg-sunken); }
 .brutal-nav-bell-foot a { font-family: var(--font-mono); font-size: 11px; font-weight: 700; letter-spacing: 0.08em; color: var(--brutal-accent); text-transform: uppercase; text-decoration: none; }
 .brutal-nav-bell-foot a:hover { text-decoration: underline; }
-@media (max-width: 899px) { .brutal-nav-actions > .brutal-nav-bell { display: none; } }
+@media (max-width: 899px) { .brutal-nav-actions > .brutal-nav-bell { display: inline-flex; } }
 /* ── Lab alert: brutal overrides ── */
 .lab-alert {
     position: relative;
