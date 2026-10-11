@@ -2399,3 +2399,81 @@ body.lab-modal-open { overflow: hidden; }
     overflow-y: auto !important;
   }
 }
+
+/* ── Navbar action buttons: total alignment reset ── */
+.brutal-nav-actions > .lab-theme-toggle,
+.brutal-nav-actions > .brutal-nav-bell,
+.brutal-nav-actions > .brutal-nav-bell > .brutal-nav-bell-btn,
+.brutal-nav-actions > .brutal-nav-user,
+.brutal-nav-actions > .brutal-nav-user > .brutal-nav-avatar,
+.brutal-nav-actions > .brutal-nav-burger {
+  width: 42px !important;
+  height: 42px !important;
+  min-width: 42px !important;
+  min-height: 42px !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  box-sizing: border-box !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  vertical-align: middle !important;
+  line-height: 1 !important;
+  border-radius: 0 !important;
+  flex-shrink: 0 !important;
+}
+
+/* Общая визуальная рамка (только для нажимаемых, не для wrapper'ов) */
+.brutal-nav-actions > .lab-theme-toggle,
+.brutal-nav-actions > .brutal-nav-bell > .brutal-nav-bell-btn,
+.brutal-nav-actions > .brutal-nav-user > .brutal-nav-avatar,
+.brutal-nav-actions > .brutal-nav-burger {
+  border: 2px solid var(--brutal-border) !important;
+  background: var(--lab-bg) !important;
+  color: var(--brutal-border) !important;
+  box-shadow: 2px 2px 0 var(--brutal-shadow) !important;
+  transition: transform .12s ease, box-shadow .12s ease, background .12s ease, color .12s ease !important;
+  text-decoration: none !important;
+}
+
+/* Bell wrapper — прозрачный контейнер, без рамки */
+.brutal-nav-actions > .brutal-nav-bell {
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  position: relative !important;
+}
+
+.brutal-nav-actions > .brutal-nav-user {
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  position: relative !important;
+}
+
+/* Иконки — одинаковый размер 18×18 */
+.brutal-nav-actions > .lab-theme-toggle svg,
+.brutal-nav-actions > .brutal-nav-bell > .brutal-nav-bell-btn svg,
+.brutal-nav-actions > .brutal-nav-burger svg {
+  width: 18px !important;
+  height: 18px !important;
+  display: block !important;
+  flex-shrink: 0 !important;
+}
+
+/* Avatar image — заполняет 38×38 внутри рамки 42×42 */
+.brutal-nav-actions > .brutal-nav-user > .brutal-nav-avatar img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  display: block !important;
+}
+
+/* Hover/focus — одинаковый сдвиг у всех */
+.brutal-nav-actions > .lab-theme-toggle:hover,
+.brutal-nav-actions > .brutal-nav-bell > .brutal-nav-bell-btn:hover,
+.brutal-nav-actions > .brutal-nav-user > .brutal-nav-avatar:hover,
+.brutal-nav-actions > .brutal-nav-burger:hover {
+  transform: translate(-2px, -2px) !important;
+  box-shadow: 4px 4px 0 var(--brutal-shadow) !important;
+}
