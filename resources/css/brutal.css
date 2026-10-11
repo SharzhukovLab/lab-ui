@@ -1600,3 +1600,38 @@ html.dark       .brutal-nav-actions .lab-theme-toggle .icon-moon { display: none
     .lab-error-actions { gap: 10px; }
     .lab-error-actions .lab-btn { flex: 1 1 auto; justify-content: center; }
 }
+/* ── Nav: SIGN IN button sized to match actions ── */
+.brutal-nav-actions > .lab-btn {
+    height: 42px;
+    min-height: 42px;
+    padding: 0 16px;
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    border-width: 2px;
+    box-shadow: 2px 2px 0 var(--brutal-shadow);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: transform .12s ease, box-shadow .12s ease;
+}
+.brutal-nav-actions > .lab-btn:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 4px 4px 0 var(--brutal-shadow);
+}
+@media (max-width: 899px) {
+    .brutal-nav-actions > .lab-btn {
+        height: 38px;
+        min-height: 38px;
+        padding: 0 12px;
+        font-size: 11px;
+    }
+}
+@media (max-width: 480px) {
+    .brutal-nav-actions > .lab-btn {
+        height: 36px;
+        min-height: 36px;
+        padding: 0 10px;
+        font-size: 10px;
+    }
+    .brutal-nav-actions > .lab-btn .lab-btn-arrow { display: none; }
+}
