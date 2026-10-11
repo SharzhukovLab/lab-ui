@@ -1805,3 +1805,25 @@ html.dark       .brutal-nav-actions .lab-theme-toggle .icon-moon { display: none
 @media (hover: none) {
     .brutal-nav-actions > .brutal-nav-user::after { display: none; }
 }
+/* ── Badge: solid variants for profile ── */
+/* Базовый .brutal-badge — outline (белый фон, чёрная рамка) */
+.brutal-badge--dark {
+    background: var(--brutal-border);
+    color: var(--lab-bg);
+    border-color: var(--brutal-border);
+}
+.dark .brutal-badge--dark {
+    background: var(--lab-fg);
+    color: var(--lab-bg);
+    border-color: var(--lab-fg);
+}
+.brutal-badge--accent {
+    background: var(--brutal-accent);
+    color: #fff;
+    border-color: var(--brutal-border);
+}
+.brutal-badge--outline {
+    background: transparent;
+    color: var(--brutal-border);
+    border-color: var(--brutal-border);
+}
