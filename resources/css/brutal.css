@@ -1331,3 +1331,136 @@ h1, h2, h3, h4 { overflow-wrap: anywhere; }
 @media (max-width: 480px) {
     .brutal-nav-avatar-fallback { width: 32px; height: 32px; font-size: 14px; }
 }
+/* ── Nav actions: unified sizes ── */
+.brutal-nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-left: auto;
+    flex-shrink: 0;
+}
+
+.brutal-nav-actions > .lab-theme-toggle,
+.brutal-nav-actions > .brutal-nav-burger,
+.brutal-nav-actions > .brutal-nav-avatar {
+    width: 42px;
+    height: 42px;
+    min-width: 42px;
+    padding: 0;
+    margin: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    border: 2px solid var(--brutal-border);
+    border-radius: 0;
+    background: var(--lab-bg);
+    color: var(--brutal-border);
+    box-shadow: 2px 2px 0 var(--brutal-shadow);
+    cursor: pointer;
+    transition: transform .12s ease, box-shadow .12s ease, background .12s ease, color .12s ease;
+    text-decoration: none;
+    overflow: hidden;
+    position: relative;
+}
+
+.brutal-nav-actions > .lab-theme-toggle:hover,
+.brutal-nav-actions > .brutal-nav-burger:hover,
+.brutal-nav-actions > .brutal-nav-avatar:hover,
+.brutal-nav-actions > .lab-theme-toggle:focus-visible,
+.brutal-nav-actions > .brutal-nav-burger:focus-visible,
+.brutal-nav-actions > .brutal-nav-avatar:focus-visible {
+    transform: translate(-2px, -2px);
+    box-shadow: 4px 4px 0 var(--brutal-shadow);
+    outline: none;
+}
+.brutal-nav-actions > .lab-theme-toggle:hover,
+.brutal-nav-actions > .brutal-nav-burger:hover {
+    background: var(--brutal-accent);
+    color: #fff;
+}
+
+.brutal-nav-actions > .brutal-nav-avatar img,
+.brutal-nav-actions > .brutal-nav-avatar .brutal-nav-avatar-fallback {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    border: 0;
+    filter: none;
+    background: var(--brutal-accent);
+    color: #fff;
+    font-family: var(--font-mono);
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1;
+}
+
+.brutal-nav-actions > .brutal-nav-avatar .brutal-nav-avatar-fallback {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.brutal-nav-actions > .lab-theme-toggle svg { display: block; }
+
+/* Extra: search form */
+.brutal-nav-actions > .brutal-nav-search {
+    display: flex;
+    align-items: center;
+    margin-right: 4px;
+}
+.brutal-nav-actions > .brutal-nav-search input { height: 42px; }
+
+@media (max-width: 899px) {
+    .brutal-nav-actions { gap: 6px; }
+}
+@media (max-width: 480px) {
+    .brutal-nav-actions > .lab-theme-toggle,
+    .brutal-nav-actions > .brutal-nav-burger,
+    .brutal-nav-actions > .brutal-nav-avatar {
+        width: 38px; height: 38px; min-width: 38px;
+    }
+}
+/* ── Nav: theme icon visibility + burger desktop-hide ── */
+/* Theme toggle: ровно одна иконка (без .dark — луна, с .dark — солнце) */
+.brutal-nav-actions > .lab-theme-toggle .icon-sun  { display: none; }
+.brutal-nav-actions > .lab-theme-toggle .icon-moon { display: block; }
+.dark .brutal-nav-actions > .lab-theme-toggle .icon-sun  { display: block; }
+.dark .brutal-nav-actions > .lab-theme-toggle .icon-moon { display: none; }
+
+/* Burger: скрыт на десктопе, показан только < 900px (более специфично чем базовое правило) */
+.brutal-nav-actions > .brutal-nav-burger { display: none; }
+@media (max-width: 899px) {
+    .brutal-nav-actions > .brutal-nav-burger { display: inline-flex; }
+}
+/* ── STACK grid (mobile 2 cols) + theme icon force ── */
+.lab-stack-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 16px;
+}
+.lab-stack-grid .brutal-card { padding: 18px 20px; box-shadow: 4px 4px 0 var(--brutal-shadow); }
+
+@media (max-width: 899px) {
+    .lab-stack-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+    }
+    .lab-stack-grid .brutal-card { padding: 14px 14px; }
+}
+@media (max-width: 380px) {
+    .lab-stack-grid { grid-template-columns: 1fr; }
+}
+
+/* Theme toggle: force one icon at a time (перебивает правила из lab.css) */
+html:not(.dark) .brutal-nav-actions .lab-theme-toggle .icon-sun,
+html:not(.dark) .brutal-nav-actions .lab-theme-toggle .icon-moon { display: none; }
+html:not(.dark) .brutal-nav-actions .lab-theme-toggle .icon-moon { display: block; }
+html.dark       .brutal-nav-actions .lab-theme-toggle .icon-sun  { display: block; }
+html.dark       .brutal-nav-actions .lab-theme-toggle .icon-moon { display: none; }
+
+/* Burger: жёстко скрыт на десктопе */
+@media (min-width: 900px) {
+    .brutal-nav-actions > .brutal-nav-burger { display: none !important; }
+}

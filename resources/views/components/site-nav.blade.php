@@ -1,15 +1,15 @@
 @props([
-    'brandTitle' => "SHARZHUKOV'S LAB",
-    'brandSub'   => '// OPEN SOURCE',
-    'brandUrl'   => '/',
-    'items'      => [],
-    'showAuth'   => true,
+    'brandTitle'   => "SHARZHUKOV'S LAB",
+    'brandSub'     => '// OPEN SOURCE',
+    'brandUrl'     => '/',
+    'items'        => [],
+    'showAuth'     => true,
+    'dashboardUrl' => 'https://account.sharzhukov.com/dashboard',
 ])
 
 @php
     $brandHref    = \Illuminate\Support\Str::startsWith($brandUrl, ['http://','https://']) ? $brandUrl : url($brandUrl);
     $loginUrl     = 'https://account.sharzhukov.com/login?return=' . urlencode(url()->current());
-    $dashboardUrl = 'https://account.sharzhukov.com/dashboard';
     $me           = auth()->user();
 
     $normalize = function ($item) {
@@ -47,23 +47,31 @@
         </ul>
 
         <div class="brutal-nav-actions">
+            {{-- Extra (напр. поиск в wiki) --}}
             {{ $slot }}
 
+            {{-- Theme toggle --}}
             <button type="button" class="lab-theme-toggle" onclick="toggleLabTheme()" aria-label="Toggle theme">
                 <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
                 <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
             </button>
 
+            {{-- Auth: avatar или SIGN IN --}}
             @if($showAuth)
                 @if($me)
-                    <a href="{{ $dashboardUrl }}" class="brutal-nav-avatar">
-                        <img src="{{ $me->avatar_url }}" alt="{{ $me->name }}">
+                    <a href="{{ $dashboardUrl }}" class="brutal-nav-avatar" title="My account">
+                        @if($me->avatar_path)
+                            <img src="{{ $me->avatar_url }}" alt="{{ $me->name }}">
+                        @else
+                            <span class="brutal-nav-avatar-fallback">{{ strtoupper(mb_substr($me->name ?? 'U', 0, 1)) }}</span>
+                        @endif
                     </a>
                 @else
                     <x-lab::button variant="primary" size="sm" href="{{ $loginUrl }}">SIGN IN →</x-lab::button>
                 @endif
             @endif
 
+            {{-- Burger --}}
             <button type="button" class="brutal-nav-burger" data-nav-toggle aria-label="Open menu" aria-expanded="false" aria-controls="brutal-nav-drawer">
                 <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
             </button>
@@ -127,7 +135,6 @@
             return;
         }
         if (e.target.closest('[data-nav-close]')) { closeDrawer(); return; }
-        // close on drawer link click
         var link = e.target.closest('.brutal-nav-drawer-link');
         if (link && !link.target) closeDrawer();
     });
