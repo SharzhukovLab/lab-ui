@@ -134,35 +134,40 @@
                 </div>
             </div>
 
-            {{-- User block in drawer (mobile) --}}
+            {{-- User block in drawer (mobile) — collapsible --}}
             @if($me)
-                <div class="brutal-nav-drawer-user">
-                    @if($me->avatar_path)
-                        <img src="{{ $me->avatar_url }}" alt="{{ $me->name }}">
-                    @else
-                        <span class="brutal-nav-avatar-fallback">{{ strtoupper(mb_substr($me->name ?? 'U', 0, 1)) }}</span>
-                    @endif
-                    <div class="brutal-nav-drawer-user-info">
-                        <div class="brutal-nav-drawer-user-name">{{ $me->name }}</div>
-                        <div class="brutal-nav-drawer-user-username">{{ $me->username }}</div>
+                <details class="brutal-nav-drawer-acc">
+                    <summary class="brutal-nav-drawer-user">
+                        @if($me->avatar_path)
+                            <img src="{{ $me->avatar_url }}" alt="{{ $me->name }}">
+                        @else
+                            <span class="brutal-nav-avatar-fallback">{{ strtoupper(mb_substr($me->name ?? 'U', 0, 1)) }}</span>
+                        @endif
+                        <div class="brutal-nav-drawer-user-info">
+                            <div class="brutal-nav-drawer-user-name">{{ $me->name }}</div>
+                            <div class="brutal-nav-drawer-user-username">{{ $me->username }}</div>
+                        </div>
+                        <svg class="brutal-nav-drawer-acc-chevron" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                    </summary>
+
+                    <div class="brutal-nav-drawer-acc-body">
+                        <a href="{{ $accountBase }}/dashboard"     class="brutal-nav-drawer-link">Dashboard →</a>
+                        <a href="{{ $accountBase }}/conversations" class="brutal-nav-drawer-link">Messages →</a>
+                        <a href="{{ $accountBase }}/notifications" class="brutal-nav-drawer-link">Notifications →</a>
+                        @if($me->username)
+                            <a href="{{ $mainBase }}/u/{{ $me->username }}" class="brutal-nav-drawer-link">Public profile →</a>
+                        @endif
+                        <a href="{{ $accountBase }}/profile" class="brutal-nav-drawer-link">Profile →</a>
+
+                        <form method="POST" action="{{ $accountBase }}/logout" class="brutal-nav-drawer-signout">
+                            @csrf
+                            <button type="submit">Sign out →</button>
+                        </form>
                     </div>
-                </div>
-
-                <a href="{{ $accountBase }}/dashboard"     class="brutal-nav-drawer-link">Dashboard →</a>
-                <a href="{{ $accountBase }}/conversations" class="brutal-nav-drawer-link">Messages →</a>
-                <a href="{{ $accountBase }}/notifications" class="brutal-nav-drawer-link">Notifications →</a>
-                @if($me->username)
-                    <a href="{{ $mainBase }}/u/{{ $me->username }}" class="brutal-nav-drawer-link">Public profile →</a>
-                @endif
-                <a href="{{ $accountBase }}/profile" class="brutal-nav-drawer-link">Profile →</a>
-
-                <form method="POST" action="{{ $accountBase }}/logout" style="margin:8px 24px 0;">
-                    @csrf
-                    <button type="submit" class="brutal-nav-drawer-link" style="background:none;border:0;cursor:pointer;padding:0;width:auto;text-align:left;color:var(--brutal-accent);">Sign out →</button>
-                </form>
+                </details>
             @endif
 
-            <div class="brutal-nav-dropdown-divider" style="margin:12px 24px;"></div>
+            <div class="brutal-nav-drawer-divider"></div>
 
             @foreach($items as $item)
                 @php $n = $normalize($item); @endphp

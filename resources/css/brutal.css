@@ -2486,3 +2486,67 @@ html:not(.dark) .brutal-nav-actions > .lab-theme-toggle .icon-moon { display: bl
 /* Dark theme — показываем только sun (нажми → станет light) */
 html.dark       .brutal-nav-actions > .lab-theme-toggle .icon-sun  { display: block !important; }
 html.dark       .brutal-nav-actions > .lab-theme-toggle .icon-moon { display: none !important; }
+
+/* ── Drawer: collapsible user block ── */
+.brutal-nav-drawer-acc {
+  margin: 16px 24px 0;
+  border: 2px solid var(--brutal-border);
+  background: var(--lab-bg-elevated);
+  box-shadow: 3px 3px 0 var(--brutal-shadow);
+}
+.brutal-nav-drawer-acc > summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  user-select: none;
+}
+.brutal-nav-drawer-acc > summary::-webkit-details-marker { display: none; }
+.brutal-nav-drawer-acc > summary::marker { content: ''; }
+.brutal-nav-drawer-acc > summary .brutal-nav-drawer-user-info {
+  flex: 1;
+  min-width: 0;
+}
+.brutal-nav-drawer-acc-chevron {
+  flex-shrink: 0;
+  transition: transform .15s ease;
+  color: var(--lab-fg-muted);
+}
+.brutal-nav-drawer-acc[open] > summary .brutal-nav-drawer-acc-chevron {
+  transform: rotate(180deg);
+}
+.brutal-nav-drawer-acc-body {
+  padding: 4px 0 8px;
+  border-top: 2px solid var(--brutal-border);
+}
+.brutal-nav-drawer-acc-body .brutal-nav-drawer-link {
+  padding: 9px 14px;
+  margin: 0;
+  font-size: 11px;
+}
+.brutal-nav-drawer-signout {
+  margin: 4px 14px 6px;
+}
+.brutal-nav-drawer-signout button {
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  padding: 0;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--brutal-accent);
+}
+.brutal-nav-drawer-signout button:hover { text-decoration: underline; }
+
+/* ── Drawer: divider ── */
+.brutal-nav-drawer-divider {
+  height: 2px;
+  background: var(--brutal-border);
+  opacity: .15;
+  margin: 16px 24px;
+}
