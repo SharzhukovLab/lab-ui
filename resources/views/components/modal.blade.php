@@ -25,7 +25,6 @@
     </div>
 </div>
 
-@once
 <script>
 (function () {
     function open(id) {
@@ -65,4 +64,3 @@
     });
 })();
 </script>
-@endonce
