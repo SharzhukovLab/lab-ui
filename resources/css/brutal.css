@@ -1464,3 +1464,10 @@ html.dark       .brutal-nav-actions .lab-theme-toggle .icon-moon { display: none
 @media (min-width: 900px) {
     .brutal-nav-actions > .brutal-nav-burger { display: none !important; }
 }
+/* ── Z-form on mobile: reverse только на desktop ── */
+/* Десктоп: 1-й в HTML слева, 2-й справа — оставляем как есть */
+/* Мобилка: у .reverse (Telegram) первый ребёнок = orbit; принудительно ставим его вниз */
+@media (max-width: 899px) {
+    .brutal-contact.reverse > *:nth-child(1) { order: 2; }
+    .brutal-contact.reverse > *:nth-child(2) { order: 1; }
+}
