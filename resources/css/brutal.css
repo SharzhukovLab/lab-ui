@@ -1635,3 +1635,173 @@ html.dark       .brutal-nav-actions .lab-theme-toggle .icon-moon { display: none
     }
     .brutal-nav-actions > .lab-btn .lab-btn-arrow { display: none; }
 }
+/* ── Nav: user dropdown (hover) ── */
+.brutal-nav-actions > .brutal-nav-user {
+    position: relative;
+    display: inline-flex;
+    width: 42px;
+    height: 42px;
+    min-width: 42px;
+}
+.brutal-nav-actions > .brutal-nav-user > .brutal-nav-avatar {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    border: 2px solid var(--brutal-border);
+    border-radius: 0;
+    background: var(--lab-bg);
+    color: var(--brutal-border);
+    box-shadow: 2px 2px 0 var(--brutal-shadow);
+    cursor: pointer;
+    transition: transform .12s ease, box-shadow .12s ease;
+    overflow: hidden;
+    text-decoration: none;
+}
+.brutal-nav-actions > .brutal-nav-user > .brutal-nav-avatar:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 4px 4px 0 var(--brutal-shadow);
+}
+.brutal-nav-actions > .brutal-nav-user > .brutal-nav-avatar img,
+.brutal-nav-actions > .brutal-nav-user > .brutal-nav-avatar .brutal-nav-avatar-fallback {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    border: 0;
+}
+.brutal-nav-actions > .brutal-nav-user > .brutal-nav-avatar .brutal-nav-avatar-fallback {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--brutal-accent);
+    color: #fff;
+    font-family: var(--font-mono);
+    font-weight: 800;
+    font-size: 16px;
+}
+
+/* Dropdown */
+.brutal-nav-dropdown {
+    display: none;
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    min-width: 230px;
+    background: var(--lab-bg);
+    border: 2px solid var(--brutal-border);
+    box-shadow: 6px 6px 0 var(--brutal-shadow);
+    z-index: 100;
+    padding: 6px 0;
+}
+.dark .brutal-nav-dropdown { background: var(--lab-bg-elevated); }
+.brutal-nav-actions > .brutal-nav-user:hover > .brutal-nav-dropdown,
+.brutal-nav-actions > .brutal-nav-user:focus-within > .brutal-nav-dropdown {
+    display: block;
+}
+.brutal-nav-dropdown-header {
+    padding: 10px 16px 12px;
+    border-bottom: 2px solid var(--brutal-border);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.brutal-nav-dropdown-header img,
+.brutal-nav-dropdown-header .brutal-nav-avatar-fallback {
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+    border: 2px solid var(--brutal-border);
+    display: block;
+    object-fit: cover;
+}
+.brutal-nav-dropdown-header .brutal-nav-avatar-fallback {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--brutal-accent);
+    color: #fff;
+    font-family: var(--font-mono);
+    font-weight: 800;
+    font-size: 14px;
+}
+.brutal-nav-dropdown-header-info { min-width: 0; }
+.brutal-nav-dropdown-header-name {
+    font-family: var(--font-sans);
+    font-weight: 800;
+    font-size: 13px;
+    color: var(--brutal-border);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.brutal-nav-dropdown-header-username {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--lab-fg-muted);
+}
+.brutal-nav-dropdown-item {
+    display: block;
+    padding: 10px 16px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--brutal-border);
+    text-decoration: none;
+    transition: background .12s ease, color .12s ease;
+}
+.brutal-nav-dropdown-item:hover {
+    background: var(--brutal-accent);
+    color: #fff;
+    text-decoration: none;
+}
+.brutal-nav-dropdown-item.danger { color: var(--brutal-accent); }
+.brutal-nav-dropdown-item.danger:hover { background: var(--brutal-accent); color: #fff; }
+.brutal-nav-dropdown-item button {
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    color: inherit;
+    font: inherit;
+    padding: 0;
+    width: 100%;
+    text-align: left;
+    text-transform: inherit;
+    letter-spacing: inherit;
+}
+.brutal-nav-dropdown-divider {
+    height: 2px;
+    background: var(--brutal-border);
+    margin: 6px 0;
+    opacity: .15;
+}
+
+@media (max-width: 899px) {
+    .brutal-nav-actions > .brutal-nav-user > .brutal-nav-dropdown { display: none !important; }
+}
+@media (max-width: 480px) {
+    .brutal-nav-actions > .brutal-nav-user { width: 38px; height: 38px; min-width: 38px; }
+}
+/* ── Nav dropdown: hover bridge (no gap loss) ── */
+/* Невидимый мост между аватаркой и меню, чтобы hover не терялся в 8px-разрыве */
+.brutal-nav-actions > .brutal-nav-user::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: max(100%, 80px);
+    height: 14px;
+    /* transparent, только для hover */
+    pointer-events: auto;
+}
+/* На тач-устройствах мост не нужен */
+@media (hover: none) {
+    .brutal-nav-actions > .brutal-nav-user::after { display: none; }
+}

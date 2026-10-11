@@ -59,13 +59,18 @@
             {{-- Auth: avatar или SIGN IN --}}
             @if($showAuth)
                 @if($me)
-                    <a href="{{ $dashboardUrl }}" class="brutal-nav-avatar" title="My account">
+                    <div class="brutal-nav-user">
+                        <a href="{{ $dashboardUrl }}" class="brutal-nav-avatar" title="My account">
                         @if($me->avatar_path)
                             <img src="{{ $me->avatar_url }}" alt="{{ $me->name }}">
                         @else
                             <span class="brutal-nav-avatar-fallback">{{ strtoupper(mb_substr($me->name ?? 'U', 0, 1)) }}</span>
                         @endif
-                    </a>
+                        </a>
+                        @isset($userMenu)
+                            {{ $userMenu }}
+                        @endisset
+                    </div>
                 @else
                     <x-lab::button variant="primary" size="sm" href="{{ $loginUrl }}">SIGN IN →</x-lab::button>
                 @endif
