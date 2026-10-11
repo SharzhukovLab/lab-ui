@@ -36,7 +36,7 @@
                 class="lab-comments__input"
                 rows="3"
                 maxlength="5000"
-                placeholder="Ваш комментарий…"
+                placeholder="Your comment…"
                 required
             ></textarea>
             <div class="lab-comments__form-foot">
