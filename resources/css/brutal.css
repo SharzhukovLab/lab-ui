@@ -2365,3 +2365,37 @@ body.lab-modal-open { overflow: hidden; }
 .brutal-nav-bell:hover > .brutal-nav-bell-dropdown {
   display: block;
 }
+
+/* ── Navbell: dropdown position + button size unification ── */
+
+@media (max-width: 899px) {
+  /* Унифицируем размеры всех action-кнопок в хедере (42×42) */
+  .brutal-nav-actions > .lab-theme-toggle,
+  .brutal-nav-actions > .brutal-nav-bell,
+  .brutal-nav-actions > .brutal-nav-bell > .brutal-nav-bell-btn,
+  .brutal-nav-actions > .brutal-nav-user > .brutal-nav-avatar,
+  .brutal-nav-actions > .brutal-nav-burger {
+    width: 42px !important;
+    height: 42px !important;
+    min-width: 42px !important;
+    min-height: 42px !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  /* Dropdown колокольчика — фиксируем к viewport, чтобы не вылезал за границы */
+  .brutal-nav-bell > .brutal-nav-bell-dropdown {
+    position: fixed !important;
+    top: 84px !important;
+    left: 12px !important;
+    right: 12px !important;
+    width: auto !important;
+    min-width: 0 !important;
+    max-width: none !important;
+    max-height: calc(100vh - 120px) !important;
+    overflow-y: auto !important;
+  }
+}
