@@ -12,6 +12,9 @@
     $loginUrl     = 'https://account.sharzhukov.com/login?return=' . urlencode(url()->current());
     $me           = auth()->user();
 
+    $accountBase  = 'https://account.sharzhukov.com';
+    $mainBase     = 'https://sharzhukov.com';
+
     $normalize = function ($item) {
         $url        = $item['url']   ?? '#';
         $label      = $item['label'] ?? '';
@@ -59,20 +62,50 @@
                 <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
             </button>
 
-            {{-- Auth: avatar или SIGN IN --}}
+            {{-- Auth: avatar + dropdown или SIGN IN --}}
             @if($showAuth)
                 @if($me)
                     <div class="brutal-nav-user">
-                        <a href="{{ $dashboardUrl }}" class="brutal-nav-avatar" title="My account">
-                        @if($me->avatar_path)
-                            <img src="{{ $me->avatar_url }}" alt="{{ $me->name }}">
-                        @else
-                            <span class="brutal-nav-avatar-fallback">{{ strtoupper(mb_substr($me->name ?? 'U', 0, 1)) }}</span>
-                        @endif
+                        <a href="{{ $dashboardUrl }}" class="brutal-nav-avatar" title="My account" aria-haspopup="true">
+                            @if($me->avatar_path)
+                                <img src="{{ $me->avatar_url }}" alt="{{ $me->name }}">
+                            @else
+                                <span class="brutal-nav-avatar-fallback">{{ strtoupper(mb_substr($me->name ?? 'U', 0, 1)) }}</span>
+                            @endif
                         </a>
-                        @isset($userMenu)
-                            {{ $userMenu }}
-                        @endisset
+
+                        {{-- User dropdown (desktop) --}}
+                        <div class="brutal-nav-dropdown" role="menu">
+                            <div class="brutal-nav-dropdown-header">
+                                @if($me->avatar_path)
+                                    <img src="{{ $me->avatar_url }}" alt="{{ $me->name }}">
+                                @else
+                                    <span class="brutal-nav-avatar-fallback">{{ strtoupper(mb_substr($me->name ?? 'U', 0, 1)) }}</span>
+                                @endif
+                                <div class="brutal-nav-dropdown-header-info">
+                                    <div class="brutal-nav-dropdown-header-name">{{ $me->name }}</div>
+                                    <div class="brutal-nav-dropdown-header-username">@{{ $me->username }}</div>
+                                </div>
+                            </div>
+
+                            <a class="brutal-nav-dropdown-item" href="{{ $accountBase }}/dashboard">Dashboard →</a>
+                            <a class="brutal-nav-dropdown-item" href="{{ $accountBase }}/conversations">Messages →</a>
+                            <a class="brutal-nav-dropdown-item" href="{{ $accountBase }}/notifications">Notifications →</a>
+
+                            <div class="brutal-nav-dropdown-divider"></div>
+
+                            @if($me->username)
+                                <a class="brutal-nav-dropdown-item" href="{{ $mainBase }}/u/{{ $me->username }}">Public profile →</a>
+                            @endif
+                            <a class="brutal-nav-dropdown-item" href="{{ $accountBase }}/settings">Settings →</a>
+
+                            <div class="brutal-nav-dropdown-divider"></div>
+
+                            <form method="POST" action="{{ $accountBase }}/logout" class="brutal-nav-dropdown-item danger">
+                                @csrf
+                                <button type="submit">Sign out →</button>
+                            </form>
+                        </div>
                     </div>
                 @else
                     <x-lab::button variant="primary" size="sm" href="{{ $loginUrl }}">SIGN IN →</x-lab::button>
@@ -100,6 +133,36 @@
                     <span class="brutal-nav-brand-sub">{{ $brandSub }}</span>
                 </div>
             </div>
+
+            {{-- User block in drawer (mobile) --}}
+            @if($me)
+                <div class="brutal-nav-drawer-user">
+                    @if($me->avatar_path)
+                        <img src="{{ $me->avatar_url }}" alt="{{ $me->name }}">
+                    @else
+                        <span class="brutal-nav-avatar-fallback">{{ strtoupper(mb_substr($me->name ?? 'U', 0, 1)) }}</span>
+                    @endif
+                    <div class="brutal-nav-drawer-user-info">
+                        <div class="brutal-nav-drawer-user-name">{{ $me->name }}</div>
+                        <div class="brutal-nav-drawer-user-username">@{{ $me->username }}</div>
+                    </div>
+                </div>
+
+                <a href="{{ $accountBase }}/dashboard"     class="brutal-nav-drawer-link">Dashboard →</a>
+                <a href="{{ $accountBase }}/conversations" class="brutal-nav-drawer-link">Messages →</a>
+                <a href="{{ $accountBase }}/notifications" class="brutal-nav-drawer-link">Notifications →</a>
+                @if($me->username)
+                    <a href="{{ $mainBase }}/u/{{ $me->username }}" class="brutal-nav-drawer-link">Public profile →</a>
+                @endif
+                <a href="{{ $accountBase }}/settings" class="brutal-nav-drawer-link">Settings →</a>
+
+                <form method="POST" action="{{ $accountBase }}/logout" style="margin:8px 24px 0;">
+                    @csrf
+                    <button type="submit" class="brutal-nav-drawer-link" style="background:none;border:0;cursor:pointer;padding:0;width:auto;text-align:left;color:var(--brutal-accent);">Sign out →</button>
+                </form>
+            @endif
+
+            <div class="brutal-nav-dropdown-divider" style="margin:12px 24px;"></div>
 
             @foreach($items as $item)
                 @php $n = $normalize($item); @endphp
