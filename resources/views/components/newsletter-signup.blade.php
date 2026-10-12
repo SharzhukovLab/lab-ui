@@ -5,7 +5,7 @@
     color:#f1f5f9;
     padding:32px;
     border:3px solid #0a0b12;
-    box-shadow:6px 6px 0 #ff5c1f;
+    box-shadow:6px 6px 0 #2563eb;
 ">
     <span class="brutal-marker" style="margin-bottom:14px;">// NEWSLETTER</span>
 
@@ -20,12 +20,12 @@
         @csrf
         <input type="email" name="email" required placeholder="you@example.com"
                style="flex:1;min-width:0;height:42px;padding:0 14px;
-                      border:2px solid #ff5c1f;border-right:none;
+                      border:2px solid #2563eb;border-right:none;
                       background:#ffffff;color:#0a0b12;
                       font-family:var(--font-mono);font-size:13px;outline:none;">
         <button type="submit" class="lab-btn lab-btn--primary"
                 style="height:42px;padding:0 18px;
-                       background:#ff5c1f;color:#ffffff;border:2px solid #ff5c1f;
+                       background:#2563eb;color:#ffffff;border:2px solid #2563eb;
                        font-family:var(--font-mono);font-size:11px;letter-spacing:0.06em;text-transform:uppercase;cursor:pointer;">
             SUBSCRIBE →
         </button>
@@ -60,10 +60,10 @@ function labNewsletterSubmit(e) {
     .then(data => {
         if (data.ok) {
             if (data.message === 'already_subscribed') {
-                status.style.color = '#ff5c1f';
+                status.style.color = '#2563eb';
                 status.textContent = '✓ You are already subscribed';
             } else {
-                status.style.color = '#ff5c1f';
+                status.style.color = '#2563eb';
                 status.textContent = '✓ Check your inbox to confirm';
             }
             form.reset();

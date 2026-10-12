@@ -11,7 +11,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/img/branding/favicon-16x16.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/img/branding/apple-touch-icon.png">
     <link rel="manifest" href="/site.webmanifest">
-    <meta name="theme-color" content="#ff5c1f">
+    <meta name="theme-color" content="#2563eb">
         <script>
         (function () {
             var t = localStorage.getItem('theme');

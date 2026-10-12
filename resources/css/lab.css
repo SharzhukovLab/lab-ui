@@ -2,7 +2,7 @@
     --color-brand-500: #3b82f6;
     --color-brand-600: #2563eb;
     --color-brand-700: #1d4ed8;
-    --color-accent-500: #ff5c1f;
+    --color-accent-500: #2563eb;
     --color-accent-600: #ea4a0f;
     --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
     --font-mono: 'JetBrains Mono', ui-monospace, monospace;
@@ -173,7 +173,7 @@ a:hover { color: var(--color-brand-700); }
 .lab-badge--danger  { background: #fef2f2; color: #b91c1c; border-color: #fecaca; }
 
 .dark .lab-badge--primary { background: rgba(37,99,235,.15); color: #93c5fd; border-color: rgba(37,99,235,.3); }
-.dark .lab-badge--accent  { background: rgba(255,92,31,.15); color: #fdba74; border-color: rgba(255,92,31,.3); }
+.dark .lab-badge--accent  { background: rgba(37,99,235,.15); color: #93c5fd; border-color: rgba(37,99,235,.3); }
 .dark .lab-badge--success { background: rgba(16,185,129,.15); color: #6ee7b7; border-color: rgba(16,185,129,.3); }
 .dark .lab-badge--danger  { background: rgba(239,68,68,.15); color: #fca5a5; border-color: rgba(239,68,68,.3); }
 
@@ -506,7 +506,7 @@ a:hover { color: var(--color-brand-700); }
 }
 .lab-btn--primary:active { transform: scale(.98); }
 .lab-btn--primary:focus-visible {
-    outline: 2px solid rgba(255, 92, 31, 0.4);
+    outline: 2px solid rgba(37, 99, 235, 0.4);
     outline-offset: 2px;
 }
 
@@ -517,9 +517,9 @@ a:hover { color: var(--color-brand-700); }
     border-color: #fed7aa;
 }
 .dark .lab-badge--primary {
-    background: rgba(255, 92, 31, .15);
-    color: #fdba74;
-    border-color: rgba(255, 92, 31, .3);
+    background: rgba(37, 99, 235, .15);
+    color: #93c5fd;
+    border-color: rgba(37, 99, 235, .3);
 }
 
 /* Links stay blue (unchanged) — but focus on links uses blue ring */
@@ -529,10 +529,10 @@ a:hover { color: var(--color-brand-700); }
    ========================================================== */
 
 :root {
-    --color-brand-500: #ff5c1f;
+    --color-brand-500: #2563eb;
     --color-brand-600: #ea4a0f;
     --color-brand-700: #c2410c;
-    --lab-ring: rgba(255, 92, 31, 0.35);
+    --lab-ring: rgba(37, 99, 235, 0.35);
 }
 
 .dark {
@@ -543,13 +543,13 @@ a:hover { color: var(--color-brand-700); }
 a { color: #ea4a0f; }
 a:hover { color: #c2410c; }
 .dark a { color: #fb923c; }
-.dark a:hover { color: #fdba74; }
+.dark a:hover { color: #93c5fd; }
 
 /* Primary button — orange */
 .lab-btn--primary {
-    background: #ff5c1f;
+    background: #2563eb;
     color: #fff;
-    border-color: #ff5c1f;
+    border-color: #2563eb;
 }
 .lab-btn--primary:hover {
     background: #ea4a0f;
@@ -558,7 +558,7 @@ a:hover { color: #c2410c; }
 }
 .lab-btn--primary:active { transform: scale(.98); }
 .lab-btn--primary:focus-visible {
-    outline: 2px solid rgba(255, 92, 31, 0.4);
+    outline: 2px solid rgba(37, 99, 235, 0.4);
     outline-offset: 2px;
 }
 
@@ -566,8 +566,8 @@ a:hover { color: #c2410c; }
 .lab-input:focus,
 .lab-textarea:focus,
 .lab-select:focus {
-    border-color: #ff5c1f;
-    box-shadow: 0 0 0 3px rgba(255, 92, 31, 0.15);
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
 }
 
 /* Badge primary — orange */
@@ -577,9 +577,9 @@ a:hover { color: #c2410c; }
     border-color: #fed7aa;
 }
 .dark .lab-badge--primary {
-    background: rgba(255, 92, 31, .15);
-    color: #fdba74;
-    border-color: rgba(255, 92, 31, .3);
+    background: rgba(37, 99, 235, .15);
+    color: #93c5fd;
+    border-color: rgba(37, 99, 235, .3);
 }
 
 /* Info alert stays blue (semantic info) */
@@ -595,10 +595,10 @@ a:hover { color: #c2410c; }
 }
 /* ─── Text selection ─── */
 ::selection {
-    background: #ff5c1f;
+    background: #2563eb;
     color: #ffffff;
 }
 ::-moz-selection {
-    background: #ff5c1f;
+    background: #2563eb;
     color: #ffffff;
 }
