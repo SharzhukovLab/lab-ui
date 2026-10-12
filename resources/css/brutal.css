@@ -1817,6 +1817,8 @@ html.dark       .brutal-nav-actions .lab-theme-toggle .icon-moon { display: none
     color: var(--lab-bg);
     border-color: var(--lab-fg);
 }
+
+.brutal-badge--outline {
     background: transparent;
     color: var(--brutal-border);
     border-color: var(--brutal-border);
