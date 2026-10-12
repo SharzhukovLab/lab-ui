@@ -33,7 +33,7 @@
     border-color: var(--brutal-border) !important;
     color: #fff !important;
 }
-.lab-btn--primary:hover { background: #ea4a0f !important; }
+.lab-btn--primary:hover { background: #1d4ed8 !important; }
 .lab-btn--secondary {
     background: var(--lab-bg) !important;
     border-color: var(--brutal-border) !important;
@@ -128,7 +128,7 @@
     color: var(--brutal-border);
     line-height: 1.4;
 }
-.brutal-badge--orange {
+.brutal-badge--accent {
     background: var(--brutal-accent);
     color: #fff;
     border-color: var(--brutal-border);
@@ -1991,13 +1991,13 @@ body.lab-modal-open { overflow: hidden; }
 
 .lab-alert--warning {
     border-left-color: var(--brutal-accent);
-    background: #fff7ed;
+    background: #eff6ff;
     color: #431407;
 }
 .dark .lab-alert--warning {
     border-left-color: var(--brutal-accent);
     background: rgba(37, 99, 235, .08);
-    color: #fed7aa;
+    color: #bfdbfe;
 }
 
 .lab-alert--info {
@@ -2013,13 +2013,13 @@ body.lab-modal-open { overflow: hidden; }
 
 .lab-alert--accent {
     border-left-color: var(--brutal-accent);
-    background: #fff7ed;
+    background: #eff6ff;
     color: #431407;
 }
 .dark .lab-alert--accent {
     border-left-color: var(--brutal-accent);
     background: rgba(37, 99, 235, .08);
-    color: #fed7aa;
+    color: #bfdbfe;
 }
 /* ---- Follow button ---- */
 .lab-follow-btn {
