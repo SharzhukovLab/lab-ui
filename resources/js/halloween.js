@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function () {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
     injectDecorations();
-    
+    spawnEmojis();
     setInterval(spawnLeaf, 2500);
 
     // Стая мышей при первом заходе
@@ -105,6 +105,33 @@ function spawnBat() {
     setTimeout(function () { b.remove(); }, 6500);
 }
 
+
+
+function spawnEmojis() {
+    if (document.querySelector('.hw-emoji-container')) return;
+    var container = document.createElement('div');
+    container.className = 'hw-emoji-container';
+    document.body.appendChild(container);
+
+    var emojis = ['🍬', '🍭', '🎃', '👻', '🪄', '🍫', '🕸️'];
+    // Спавним 20 эмодзи в случайных местах
+    for (var i = 0; i < 20; i++) {
+        var e = document.createElement('div');
+        e.className = 'hw-emoji';
+        e.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+        
+        // Позиция
+        e.style.left = Math.random() * 95 + 'vw';
+        e.style.top = Math.random() * 95 + 'vh';
+        
+        // Случайный размер и задержка анимации
+        var size = Math.random() * 20 + 20;
+        e.style.fontSize = size + 'px';
+        e.style.animationDelay = (Math.random() * 4) + 's';
+        
+        container.appendChild(e);
+    }
+}
 
 function spawnLeaf() {
     var leaf = document.createElement('div');
