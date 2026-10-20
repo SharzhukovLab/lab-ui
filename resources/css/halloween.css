@@ -34,15 +34,80 @@
 
 [data-halloween="on"] ::selection { background: #ea580c; color: #fff7ed; }
 
-/* Контрастные кнопки с неоновым свечением */
-[data-halloween="on"] .btn--primary,
-[data-halloween="on"] .brutal-btn--primary {
-    box-shadow: 4px 4px 0 var(--lab-fg), 0 0 15px rgba(234, 88, 12, 0.4);
+/* ── ТРАНСФОРМАЦИЯ БЛОКОВ (Карточки, кнопки, плашки) ──────── */
+
+/* 1. Базовые карточки и контейнеры получают оранжевую рамку и фиолетовую тень */
+[data-halloween="on"] .card,
+[data-halloween="on"] .project-card,
+[data-halloween="on"] .brutal-border,
+[data-halloween="on"] .stack-item {
+    border-color: #ea580c !important;
+    box-shadow: 4px 4px 0 #8b5cf6 !important;
+    background-color: var(--lab-bg-elevated) !important;
+    transition: all 0.3s ease;
 }
 
-/* ── ПАУТИНА (Яркая и заметная) ────────────────────────────── */
+.dark[data-halloween="on"] .card,
+.dark[data-halloween="on"] .project-card,
+.dark[data-halloween="on"] .brutal-border,
+.dark[data-halloween="on"] .stack-item {
+    border-color: #f97316 !important;
+    box-shadow: 4px 4px 0 #7c3aed !important;
+    background-color: #1c1917 !important;
+}
 
-/* Паутина в углах экрана */
+[data-halloween="on"] .card:hover,
+[data-halloween="on"] .project-card:hover,
+[data-halloween="on"] .brutal-border:hover,
+[data-halloween="on"] .stack-item:hover {
+    box-shadow: 0 0 20px rgba(234, 88, 12, 0.4), 6px 6px 0 #8b5cf6 !important;
+    transform: translate(-2px, -2px);
+}
+
+/* 2. Кнопки */
+[data-halloween="on"] .btn--primary,
+[data-halloween="on"] .brutal-btn--primary,
+[data-halloween="on"] .btn-primary {
+    background-color: #ea580c !important;
+    border-color: #ea580c !important;
+    box-shadow: 4px 4px 0 #7c3aed !important; /* Фиолетовая тень */
+    color: #fff !important;
+}
+[data-halloween="on"] .btn--primary:hover,
+[data-halloween="on"] .brutal-btn--primary:hover,
+[data-halloween="on"] .btn-primary:hover {
+    background-color: #c2410c !important;
+    box-shadow: 0 0 15px rgba(234, 88, 12, 0.6), 6px 6px 0 #7c3aed !important;
+    transform: translate(-2px, -2px);
+}
+
+/* 3. Терминал на главной (окно с кодом) */
+[data-halloween="on"] .terminal-window,
+[data-halloween="on"] .brutal-window,
+[data-halloween="on"] .terminal {
+    border-color: #f97316 !important;
+    box-shadow: 8px 8px 0 rgba(124, 58, 237, 0.5), 0 0 30px rgba(234, 88, 12, 0.2) !important;
+}
+
+/* 4. Плашки-бейджи (// STACK, EST. 2026) */
+[data-halloween="on"] .badge,
+[data-halloween="on"] .eyebrow {
+    border-color: #8b5cf6 !important;
+    color: #f97316 !important;
+    box-shadow: 2px 2px 0 #8b5cf6 !important;
+}
+
+/* 5. Выделение текста в заголовке (DEVELOPERS) */
+[data-halloween="on"] mark,
+[data-halloween="on"] .highlight,
+[data-halloween="on"] .bg-blue-600 {
+    background-color: #ea580c !important;
+    color: #0c0a09 !important;
+    text-shadow: 2px 2px 0 #8b5cf6;
+}
+
+/* ── ПАУТИНА ─────────────────────────────────────────────── */
+
 .hw-cobweb-screen {
     position: fixed;
     width: 120px;
@@ -50,7 +115,7 @@
     pointer-events: none;
     z-index: 9997;
     opacity: 0.9;
-    color: #ea580c; /* Яркий оранжевый */
+    color: #ea580c;
 }
 .hw-cobweb-tl { top: 0; left: 0; }
 .hw-cobweb-tr { top: 0; right: 0; transform: scaleX(-1); }
@@ -58,17 +123,6 @@
 .hw-cobweb-br { bottom: 0; right: 0; transform: scale(-1); }
 
 /* Паутина на карточках */
-[data-halloween="on"] .project-card,
-[data-halloween="on"] .card {
-    position: relative;
-    overflow: hidden;
-    transition: box-shadow 0.3s, border-color 0.3s;
-}
-[data-halloween="on"] .project-card:hover,
-[data-halloween="on"] .card:hover {
-    box-shadow: 0 0 20px rgba(234, 88, 12, 0.3), 4px 4px 0 var(--lab-fg);
-    border-color: var(--color-brand-500);
-}
 [data-halloween="on"] .project-card::before,
 [data-halloween="on"] .card::before {
     content: '';
@@ -78,14 +132,13 @@
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ea580c' stroke-width='1.5'%3E%3Cpath d='M0 0 L24 0 L24 24 M0 0 L0 24 M0 0 L24 24 M0 0 L12 2 M0 0 L2 12 M0 0 L18 6 M0 0 L6 18'/%3E%3C/svg%3E");
     background-size: contain;
     background-repeat: no-repeat;
-    opacity: 0.8; /* Ярко и заметно */
+    opacity: 0.8;
     pointer-events: none;
     z-index: 10;
 }
 
 /* ── ПОДГЛЯДЫВАЮЩИЕ ЭЛЕМЕНТЫ ────────────────────────────── */
 
-/* Тыква в углу */
 .hw-peek {
     position: fixed;
     bottom: -10px;
@@ -101,7 +154,6 @@
     50%       { transform: translateY(-10px) rotate(5deg); }
 }
 
-/* Призрак слева (глаза) */
 .hw-peek-ghost {
     position: fixed;
     top: 30%;
@@ -116,14 +168,13 @@
     50%      { transform: translateY(-20px) scale(1.05); }
 }
 
-/* Летучая мышь на навигации */
 .hw-nav-bat {
     position: absolute;
     top: 100%;
     left: 15%;
     width: 35px;
     height: 35px;
-    color: var(--color-brand-500);
+    color: #f97316;
     animation: hw-swing 4s ease-in-out infinite;
     transform-origin: top center;
     pointer-events: none;
@@ -135,7 +186,7 @@
     50%       { transform: rotate(15deg); }
 }
 
-/* Туман / Виньетка по краям экрана */
+/* Туман / Виньетка */
 [data-halloween="on"] body::after {
     content: '';
     position: fixed;
@@ -147,7 +198,6 @@
 
 /* ── ПРОЧИЕ ФИШКИ ────────────────────────────────────────── */
 
-/* Летучая мышь летающая (пасхалка) */
 @keyframes hw-bat-fly {
     0%   { transform: translate(-15vw, 10vh)  rotate(0deg);   opacity: 0; }
     10%  { opacity: 1; }
@@ -162,7 +212,6 @@
     z-index: 9999;
 }
 
-/* Konami Candy rain */
 @keyframes hw-candy-drop {
     0% { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
     100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
@@ -175,11 +224,10 @@
     animation: hw-candy-drop linear forwards;
 }
 
-/* Утилиты для позиционирования стикеров */
 .hw-sticker {
     position: absolute;
     pointer-events: none;
-    color: var(--color-brand-500);
+    color: #ea580c;
     filter: drop-shadow(2px 2px 0 rgba(0,0,0,.2));
     z-index: 2;
 }
@@ -188,14 +236,13 @@
 .hw-sticker--inline-right { position: static; margin-left: .5rem; transform: rotate(-8deg); }
 .hw-sticker--inline-left  { position: static; margin-right: .5rem; transform: rotate(8deg); }
 
-/* Hero banner */
 .hw-banner {
     display: flex; align-items: center; gap: 12px;
     padding: 12px 18px;
     margin-bottom: 20px;
     background: var(--lab-bg-elevated);
-    border: 2px solid var(--color-brand-600);
-    box-shadow: 4px 4px 0 var(--color-brand-600);
+    border: 2px solid #ea580c;
+    box-shadow: 4px 4px 0 #8b5cf6;
     font-family: var(--font-mono);
     font-size: 13px;
     letter-spacing: .02em;
@@ -203,7 +250,7 @@
     color: var(--lab-fg);
 }
 .hw-banner__emoji { font-size: 22px; }
-.hw-banner__link  { margin-left: auto; font-weight: 700; color: var(--color-brand-600); text-decoration: none; }
+.hw-banner__link  { margin-left: auto; font-weight: 700; color: #ea580c; text-decoration: none; }
 .hw-banner__link:hover { text-decoration: underline; }
 
 @media (prefers-reduced-motion: reduce) {
@@ -214,4 +261,6 @@
     .hw-sticker[data-heavy] { display: none; }
     .hw-peek, .hw-peek-ghost, .hw-cobweb-screen { display: none; }
     [data-halloween="on"] body::after { box-shadow: inset 0 0 50px rgba(0,0,0,0.6); }
+    /* Отключаем тяжелые тени на мобильных для производительности */
+    [data-halloween="on"] .card, [data-halloween="on"] .stack-item { box-shadow: 2px 2px 0 #8b5cf6 !important; }
 }
