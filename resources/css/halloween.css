@@ -1,0 +1,94 @@
+/* ============================================================
+   Halloween overlay — activates via <html data-halloween="on">
+   ============================================================ */
+
+:root[data-halloween="on"] {
+    --color-brand-500: #7c3aed;
+    --color-brand-600: #6d28d9;
+    --color-brand-700: #5b21b6;
+    --color-accent-500: #f97316;
+    --color-accent-600: #ea580c;
+
+    --lab-bg:            #fdfaf3;
+    --lab-bg-elevated:   #f8f2e6;
+    --lab-bg-sunken:     #efe7d5;
+    --lab-fg:            #1c1530;
+    --lab-fg-muted:      #6b5b8a;
+    --lab-fg-subtle:     #9a8bb5;
+    --lab-border:        rgba(124, 58, 237, 0.16);
+    --lab-border-strong: rgba(124, 58, 237, 0.28);
+    --lab-ring:          rgba(124, 58, 237, 0.35);
+}
+
+.dark[data-halloween="on"] {
+    --lab-bg:            #0d0a14;
+    --lab-bg-elevated:   #15101f;
+    --lab-bg-sunken:     #07050b;
+    --lab-fg:            #ede9fe;
+    --lab-fg-muted:      #a89ec5;
+    --lab-fg-subtle:     #6b5f8a;
+    --lab-border:        rgba(167, 139, 250, 0.14);
+    --lab-border-strong: rgba(167, 139, 250, 0.28);
+    --lab-ring:          rgba(167, 139, 250, 0.45);
+}
+
+[data-halloween="on"] ::selection { background: #7c3aed; color: #fdfaf3; }
+
+[data-halloween="on"] .btn--primary,
+[data-halloween="on"] .brutal-btn--primary {
+    box-shadow: 4px 4px 0 var(--lab-fg), 0 0 24px rgba(124, 58, 237, .35);
+}
+
+/* Sticker positioning */
+.hw-sticker {
+    position: absolute;
+    pointer-events: none;
+    color: var(--color-brand-600);
+    filter: drop-shadow(2px 2px 0 rgba(0,0,0,.12));
+    z-index: 2;
+}
+.hw-sticker--top-right    { top: -18px; right: -18px; transform: rotate(12deg); }
+.hw-sticker--top-left     { top: -18px; left: -18px;  transform: rotate(-12deg); }
+.hw-sticker--inline-right { position: static; margin-left: .5rem; transform: rotate(-8deg); }
+.hw-sticker--inline-left  { position: static; margin-right: .5rem; transform: rotate(8deg); }
+
+/* Hero banner */
+.hw-banner {
+    display: flex; align-items: center; gap: 12px;
+    padding: 12px 18px;
+    margin-bottom: 20px;
+    background: var(--lab-bg-elevated);
+    border: 2px solid var(--color-brand-600);
+    box-shadow: 4px 4px 0 var(--color-brand-600);
+    font-family: var(--font-mono);
+    font-size: 13px;
+    letter-spacing: .02em;
+    text-transform: uppercase;
+    color: var(--lab-fg);
+}
+.hw-banner__emoji { font-size: 22px; }
+.hw-banner__link  { margin-left: auto; font-weight: 700; color: var(--color-brand-600); text-decoration: none; }
+.hw-banner__link:hover { text-decoration: underline; }
+
+/* Easter egg: flying bat */
+@keyframes hw-bat-fly {
+    0%   { transform: translate(-15vw, 10vh)  rotate(0deg);   opacity: 0; }
+    10%  { opacity: 1; }
+    90%  { opacity: 1; }
+    100% { transform: translate(115vw, -20vh) rotate(-25deg); opacity: 0; }
+}
+.hw-bat-fly {
+    position: fixed; top: 0; left: 0;
+    width: 48px; height: 48px;
+    pointer-events: none;
+    animation: hw-bat-fly 6s cubic-bezier(.4,.1,.6,.9) forwards;
+    z-index: 9999;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hw-bat-fly { display: none; }
+}
+
+@media (max-width: 899px) {
+    .hw-sticker[data-heavy] { display: none; }
+}

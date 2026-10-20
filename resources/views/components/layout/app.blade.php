@@ -23,6 +23,37 @@
     if (t === 'dark') document.documentElement.classList.add('dark');
 })();
     </script>
+    <script>
+    (function () {
+        var now   = new Date();
+        var start = new Date('2026-10-20T00:00:00Z');
+        var end   = new Date('2026-11-02T23:59:59Z');
+        var inWindow = now >= start && now <= end;
+        var pref = localStorage.getItem('hw-mode');
+        var on   = pref === 'on' || (pref !== 'off' && inWindow);
+        function addFavicon() {
+            if (document.head.querySelector('link[data-hw-favicon]')) return;
+            var l = document.createElement('link');
+            l.rel = 'icon'; l.type = 'image/svg+xml';
+            l.href = '/img/branding/halloween/favicon.svg';
+            l.setAttribute('data-hw-favicon', '1');
+            document.head.appendChild(l);
+        }
+        function rmFavicon() {
+            var old = document.head.querySelector('link[data-hw-favicon]');
+            if (old) old.remove();
+        }
+        if (on) { document.documentElement.setAttribute('data-halloween', 'on'); addFavicon(); }
+        window.__HW_ON__ = on;
+        window.toggleHalloween = function () {
+            var html = document.documentElement;
+            var next = html.getAttribute('data-halloween') === 'on' ? 'off' : 'on';
+            if (next === 'on') { html.setAttribute('data-halloween', 'on'); addFavicon(); }
+            else               { html.removeAttribute('data-halloween'); rmFavicon(); }
+            localStorage.setItem('hw-mode', next);
+        };
+    })();
+    </script>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @stack('head')
 </head>
@@ -44,6 +75,7 @@
                     <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
                     <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
                 </button>
+                <x-lab::halloween-toggle />
                 {{ $navActions ?? '' }}
             </div>
         </div>
