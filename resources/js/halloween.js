@@ -1,5 +1,27 @@
 // Halloween — boot handled inline in <head>, this only handles easter eggs.
 
+(function() {
+    function addFavicon() {
+        if (document.head.querySelector('link[data-hw-favicon]')) return;
+        var l = document.createElement('link');
+        l.rel = 'icon'; l.type = 'image/svg+xml';
+        l.href = '/img/branding/halloween/favicon.svg';
+        l.setAttribute('data-hw-favicon', '1');
+        document.head.appendChild(l);
+    }
+    function rmFavicon() {
+        var old = document.head.querySelector('link[data-hw-favicon]');
+        if (old) old.remove();
+    }
+    window.toggleHalloween = function () {
+        var html = document.documentElement;
+        var next = html.getAttribute('data-halloween') === 'on' ? 'off' : 'on';
+        if (next === 'on') { html.setAttribute('data-halloween', 'on'); addFavicon(); }
+        else { html.removeAttribute('data-halloween'); rmFavicon(); }
+        localStorage.setItem('hw-mode', next);
+    };
+})();
+
 document.addEventListener('DOMContentLoaded', function () {
     if (document.documentElement.getAttribute('data-halloween') !== 'on') return;
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
@@ -25,7 +47,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // 3. Console message
     console.log(
         '%c🎃 Happy Halloween! %cTry the Konami code...',
         'font-size:16px;color:#7c3aed;font-weight:bold;',
