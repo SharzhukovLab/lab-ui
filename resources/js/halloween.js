@@ -27,6 +27,8 @@ document.addEventListener('DOMContentLoaded', function () {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
     injectDecorations();
+    
+    setInterval(spawnLeaf, 2500);
 
     // Стая мышей при первом заходе
     if (!sessionStorage.getItem('hw-bats-shown')) {
@@ -101,6 +103,23 @@ function spawnBat() {
     b.innerHTML = '<svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="#ea580c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6c-1 0-2 1-2 3l-4-2 1 4-3 1 3 2 2 3 3-3 3 3 2-3 3-2-3-1 1-4-4 2c0-2-1-3-2-3z"/></svg>';
     document.body.appendChild(b);
     setTimeout(function () { b.remove(); }, 6500);
+}
+
+
+function spawnLeaf() {
+    var leaf = document.createElement('div');
+    leaf.className = 'hw-leaf';
+    var size = Math.floor(Math.random() * 15) + 15;
+    var left = Math.random() * 100;
+    var duration = Math.random() * 4 + 4;
+    
+    leaf.innerHTML = `<svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2c-5 0-9 4-9 9s4 9 9 9 9-4 9-9-4-9-9-9z"/><path d="M12 8v8M9 11l3-3 3 3"/></svg>`;
+    
+    leaf.style.left = left + 'vw';
+    leaf.style.animationDuration = duration + 's';
+    
+    document.body.appendChild(leaf);
+    setTimeout(() => leaf.remove(), duration * 1000);
 }
 
 function triggerCandyRain() {

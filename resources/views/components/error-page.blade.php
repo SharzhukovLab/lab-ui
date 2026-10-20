@@ -103,3 +103,31 @@
         @endif
     </div>
 </section>
+
+{{-- Halloween 404 Overlay --}}
+@if(isset($code) && $code == 404)
+<div class="hw-404-overlay">
+    <div style="text-align: center;">
+        <div style="font-size: 100px; line-height: 1; margin-bottom: 20px; animation: hw-ghost-float 3s infinite;">👻</div>
+        <h1 style="font-size: 5rem; font-family: var(--font-mono); font-weight: 900; color: #ea580c; text-shadow: 4px 4px 0 #7c3aed; margin: 0;">404</h1>
+        <h2 style="font-size: 1.5rem; text-transform: uppercase; margin-top: 10px; color: #f5f5f4; letter-spacing: 2px;">Vanished into the void</h2>
+        <p style="color: #a8a29e; margin: 20px auto 30px; max-width: 400px;">The page you are looking for has been spirited away.</p>
+        <a href="/" class="btn btn--primary" style="display: inline-block; padding: 14px 28px; background: #ea580c; color: white; font-weight: bold; text-decoration: none; border: 2px solid #ea580c; box-shadow: 4px 4px 0 #7c3aed; text-transform: uppercase; font-family: var(--font-mono);">Return to the living →</a>
+    </div>
+</div>
+<style>
+.hw-404-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: #0c0a09;
+    z-index: 99999;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+[data-halloween="on"] .hw-404-overlay {
+    display: flex !important;
+}
+</style>
+@endif

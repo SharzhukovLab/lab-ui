@@ -480,3 +480,19 @@
 [data-halloween="on"] [class*="terminal"] * {
     color: #f5f5f4 !important;
 }
+
+/* Falling Leaves */
+@keyframes hw-leaf-fall {
+    0% { transform: translateY(-10vh) rotate(0deg) translateX(0); opacity: 0; }
+    10% { opacity: 0.8; }
+    90% { opacity: 0.8; }
+    100% { transform: translateY(110vh) rotate(360deg) translateX(50px); opacity: 0; }
+}
+.hw-leaf {
+    position: fixed;
+    top: -50px;
+    pointer-events: none;
+    z-index: 9996;
+    animation: hw-leaf-fall linear forwards;
+    color: #ea580c;
+}
