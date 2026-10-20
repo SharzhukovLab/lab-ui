@@ -590,3 +590,83 @@
 @media (max-width: 480px) {
     .hw-block-emoji { font-size: 12px !important; opacity: 0.6; }
 }
+/* ============================================================
+   MOBILE & TERMINAL FIX V2
+   ============================================================ */
+
+/* 1. Паутина привязана к самому верху на мобилках */
+@media (max-width: 899px) {
+    .hw-cobweb-screen {
+        display: block !important;
+        top: 0 !important; /* В самое начало */
+        width: 70px !important;
+        height: 70px !important;
+        opacity: 0.8 !important;
+        z-index: 9999 !important;
+    }
+    .hw-cobweb-tl { left: 0 !important; }
+    .hw-cobweb-tr { right: 0 !important; }
+    .hw-cobweb-bl, .hw-cobweb-br { display: none !important; }
+}
+
+/* 2. Фикс терминала (убираем рамки и тени у ВСЕХ внутренних элементов) */
+[data-halloween="on"] .terminal-window *,
+[data-halloween="on"] .brutal-window *,
+[data-halloween="on"] .terminal *,
+[data-halloween="on"] [class*="terminal"] * {
+    border: none !important;
+    box-shadow: none !important;
+    background-color: transparent !important;
+    transform: none !important;
+    outline: none !important;
+}
+
+/* Возвращаем красивую внешнюю рамку самому окну терминала */
+[data-halloween="on"] .terminal-window,
+[data-halloween="on"] .brutal-window,
+[data-halloween="on"] .terminal,
+[data-halloween="on"] [class*="terminal"] {
+    border: 2px solid #ea580c !important;
+    background-color: #0c0a09 !important;
+    box-shadow: 8px 8px 0 rgba(124, 58, 237, 0.6), 0 0 30px rgba(234, 88, 12, 0.15) !important;
+}
+/* ============================================================
+   MOBILE & TERMINAL FIX V2
+   ============================================================ */
+
+/* 1. Паутина привязана к самому верху на мобилках */
+@media (max-width: 899px) {
+    .hw-cobweb-screen {
+        display: block !important;
+        top: 0 !important; /* В самое начало */
+        width: 70px !important;
+        height: 70px !important;
+        opacity: 0.8 !important;
+        z-index: 9999 !important;
+    }
+    .hw-cobweb-tl { left: 0 !important; }
+    .hw-cobweb-tr { right: 0 !important; }
+    .hw-cobweb-bl, .hw-cobweb-br { display: none !important; }
+}
+
+/* 2. Фикс терминала (убираем рамки и тени у ВСЕХ внутренних элементов) */
+[data-halloween="on"] .terminal-window *,
+[data-halloween="on"] .brutal-window *,
+[data-halloween="on"] .terminal *,
+[data-halloween="on"] [class*="terminal"] * {
+    border: none !important;
+    box-shadow: none !important;
+    background-color: transparent !important;
+    transform: none !important;
+    outline: none !important;
+}
+
+/* Возвращаем красивую внешнюю рамку самому окну терминала */
+[data-halloween="on"] .terminal-window,
+[data-halloween="on"] .brutal-window,
+[data-halloween="on"] .terminal,
+[data-halloween="on"] [class*="terminal"] {
+    border: 2px solid #ea580c !important;
+    background-color: #0c0a09 !important;
+    box-shadow: 8px 8px 0 rgba(124, 58, 237, 0.6), 0 0 30px rgba(234, 88, 12, 0.15) !important;
+}
