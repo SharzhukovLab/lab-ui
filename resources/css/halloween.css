@@ -449,3 +449,34 @@
     pointer-events: none;
     z-index: 0;
 }
+
+/* ============================================================
+   TERMINAL FIX (Очистка внутренних элементов от агрессивных теней)
+   ============================================================ */
+
+/* Сбрасываем артефакты у всех детей терминала */
+[data-halloween="on"] .terminal-window *,
+[data-halloween="on"] .brutal-window *,
+[data-halloween="on"] .terminal *,
+[data-halloween="on"] [class*="terminal"] * {
+    box-shadow: none !important;
+    border-color: transparent !important;
+    background-color: transparent !important;
+    transform: none !important;
+}
+
+/* Оставляем красивую рамку снаружи */
+[data-halloween="on"] .terminal-window,
+[data-halloween="on"] .brutal-window,
+[data-halloween="on"] .terminal,
+[data-halloween="on"] [class*="terminal"] {
+    border: 2px solid #ea580c !important;
+    background-color: #0c0a09 !important;
+    box-shadow: 8px 8px 0 rgba(124, 58, 237, 0.6), 0 0 30px rgba(234, 88, 12, 0.15) !important;
+}
+
+/* Восстанавливаем цвет текста внутри терминала */
+[data-halloween="on"] .terminal-window *,
+[data-halloween="on"] [class*="terminal"] * {
+    color: #f5f5f4 !important;
+}
