@@ -92,3 +92,34 @@
 @media (max-width: 899px) {
     .hw-sticker[data-heavy] { display: none; }
 }
+
+/* Candy Rain (Konami code) */
+@keyframes hw-candy-drop {
+    0% { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+}
+.hw-candy-fall {
+    position: fixed; top: -50px;
+    font-size: 32px;
+    z-index: 9999;
+    pointer-events: none;
+    animation: hw-candy-drop linear forwards;
+}
+/* Cobweb on cards */
+[data-halloween="on"] .project-card,
+[data-halloween="on"] .card {
+    position: relative;
+    overflow: hidden; /* Чтобы паутина не вылезала */
+}
+[data-halloween="on"] .project-card::before,
+[data-halloween="on"] .card::before {
+    content: '';
+    position: absolute;
+    top: -10px; right: -10px;
+    width: 50px; height: 50px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%237c3aed' stroke-width='1.5'%3E%3Cpath d='M0 0h20M0 0v20M0 0l20 20M0 0c10 3 17 10 20 20M0 0c3 10 10 17 20 20'/%3E%3C/svg%3E");
+    background-size: contain;
+    opacity: 0.4;
+    pointer-events: none;
+    z-index: 10;
+}
