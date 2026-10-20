@@ -560,3 +560,33 @@
     0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.15; }
     50%      { transform: scale(1.3) rotate(15deg); opacity: 0.35; }
 }
+/* ============================================================
+   BLOCK EMOJI DECORATIONS
+   ============================================================ */
+
+.hw-block-emoji {
+    position: absolute;
+    pointer-events: none;
+    z-index: 5;
+    opacity: 0.75;
+    filter: drop-shadow(0 0 4px rgba(234, 88, 12, 0.5));
+    animation: hw-block-emoji-float 3s ease-in-out infinite;
+    line-height: 1;
+    user-select: none;
+}
+
+/* Позиции внутри блока (внутри, чтобы не резалось overflow) */
+.hw-block-emoji[data-corner="tl"] { top: 6px; left: 6px; }
+.hw-block-emoji[data-corner="tr"] { top: 6px; right: 40px; } /* 40px — обходим паутину */
+.hw-block-emoji[data-corner="bl"] { bottom: 6px; left: 6px; }
+.hw-block-emoji[data-corner="br"] { bottom: 6px; right: 30px; } /* 30px — обходим фиолетовую точку */
+
+@keyframes hw-block-emoji-float {
+    0%, 100% { transform: translateY(0) rotate(-8deg); }
+    50%      { transform: translateY(-4px) rotate(8deg); }
+}
+
+/* Скрываем на очень маленьких экранах, чтобы не мешать */
+@media (max-width: 480px) {
+    .hw-block-emoji { font-size: 12px !important; opacity: 0.6; }
+}

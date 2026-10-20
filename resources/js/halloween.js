@@ -27,8 +27,15 @@ document.addEventListener('DOMContentLoaded', function () {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
     injectDecorations();
-    spawnEmojis();
+    decorateBlocks();
     setInterval(spawnLeaf, 2500);
+
+    // Watch for dynamically added blocks (modals, AJAX content)
+    var observer = new MutationObserver(function() {
+        clearTimeout(window.__hwDecorateTimeout);
+        window.__hwDecorateTimeout = setTimeout(decorateBlocks, 150);
+    });
+    observer.observe(document.body, { childList: true, subtree: true });
 
     // Стая мышей при первом заходе
     if (!sessionStorage.getItem('hw-bats-shown')) {
@@ -107,32 +114,49 @@ function spawnBat() {
 
 
 
-function spawnEmojis() {
-    if (document.querySelector('.hw-emoji-container')) return;
-    var container = document.createElement('div');
-    container.className = 'hw-emoji-container';
-    document.body.appendChild(container);
 
-    var emojis = ['🍬', '🍭', '🎃', '👻', '🪄', '🍫', '🕸️'];
-    // Спавним 20 эмодзи в случайных местах
-    for (var i = 0; i < 20; i++) {
-        var e = document.createElement('div');
-        e.className = 'hw-emoji';
-        e.innerText = emojis[Math.floor(Math.random() * emojis.length)];
-        
-        // Позиция
-        e.style.left = Math.random() * 95 + 'vw';
-        e.style.top = Math.random() * 95 + 'vh';
-        
-        // Случайный размер и задержка анимации
-        var size = Math.random() * 20 + 20;
-        e.style.fontSize = size + 'px';
-        e.style.animationDelay = (Math.random() * 4) + 's';
-        
-        container.appendChild(e);
-    }
+function decorateBlocks() {
+    var selectors = [
+        '.card', '.brutal-card', '.project-card', '.stack-item',
+        'article', '.ecosystem-card', '.modal',
+        '[class*="card"]', '[class*="Card"]',
+        'footer .brutal-border'
+    ].join(',');
+
+    var blocks = document.querySelectorAll(selectors);
+    var emojis = ['🎃', '👻', '🍬', '🍭', '🪄', '🕸️', '🦇', '🍩'];
+
+    blocks.forEach(function(block) {
+        // Не дублируем
+        if (block.querySelector('.hw-block-emoji')) return;
+
+        // Пропускаем крошечные блоки (иконки, бейджи)
+        var rect = block.getBoundingClientRect();
+        if (rect.width < 120 || rect.height < 60) return;
+
+        // Убеждаемся, что position установлен
+        if (getComputedStyle(block).position === 'static') {
+            block.style.position = 'relative';
+        }
+
+        // Выбираем углы: tl всегда свободен, bl всегда, tr — иногда
+        var corners = ['tl'];
+        if (Math.random() > 0.3) corners.push('bl');
+        if (Math.random() > 0.6) corners.push('tr');
+
+        var count = 1 + Math.floor(Math.random() * Math.min(2, corners.length));
+
+        for (var i = 0; i < count; i++) {
+            var e = document.createElement('span');
+            e.className = 'hw-block-emoji';
+            e.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+            e.setAttribute('data-corner', corners[i]);
+            e.style.fontSize = (14 + Math.random() * 8) + 'px';
+            e.style.animationDelay = (Math.random() * 3) + 's';
+            block.appendChild(e);
+        }
+    });
 }
-
 function spawnLeaf() {
     var leaf = document.createElement('div');
     leaf.className = 'hw-leaf';
