@@ -3,11 +3,11 @@
    ============================================================ */
 
 :root[data-halloween="on"] {
-    --color-brand-500: #ea580c;
-    --color-brand-600: #c2410c;
-    --color-brand-700: #9a3412;
-    --color-accent-500: #7c3aed;
-    --color-accent-600: #6d28d9;
+    --color-brand-500: #f97316;
+    --color-brand-600: #ea580c;
+    --color-brand-700: #c2410c;
+    --color-accent-500: #8b5cf6;
+    --color-accent-600: #7c3aed;
 
     --lab-bg:            #fff7ed;
     --lab-bg-elevated:   #ffedd5;
@@ -15,9 +15,9 @@
     --lab-fg:            #1c1917;
     --lab-fg-muted:      #57534e;
     --lab-fg-subtle:     #a8a29e;
-    --lab-border:        rgba(194, 65, 12, 0.2);
-    --lab-border-strong: rgba(194, 65, 12, 0.4);
-    --lab-ring:          rgba(234, 88, 12, 0.4);
+    --lab-border:        rgba(234, 88, 12, 0.3);
+    --lab-border-strong: rgba(234, 88, 12, 0.6);
+    --lab-ring:          rgba(249, 115, 22, 0.5);
 }
 
 .dark[data-halloween="on"] {
@@ -27,80 +27,125 @@
     --lab-fg:            #f5f5f4;
     --lab-fg-muted:      #a8a29e;
     --lab-fg-subtle:     #57534e;
-    --lab-border:        rgba(249, 115, 22, 0.15);
-    --lab-border-strong: rgba(249, 115, 22, 0.3);
-    --lab-ring:          rgba(249, 115, 22, 0.5);
+    --lab-border:        rgba(249, 115, 22, 0.25);
+    --lab-border-strong: rgba(249, 115, 22, 0.5);
+    --lab-ring:          rgba(249, 115, 22, 0.6);
 }
 
 [data-halloween="on"] ::selection { background: #ea580c; color: #fff7ed; }
 
+/* Контрастные кнопки с неоновым свечением */
 [data-halloween="on"] .btn--primary,
 [data-halloween="on"] .brutal-btn--primary {
-    box-shadow: 4px 4px 0 var(--lab-fg), 0 0 24px rgba(234, 88, 12, .4);
+    box-shadow: 4px 4px 0 var(--lab-fg), 0 0 15px rgba(234, 88, 12, 0.4);
 }
 
-/* ── Подглядывающие элементы ───────────────────────────────── */
+/* ── ПАУТИНА (Яркая и заметная) ────────────────────────────── */
 
-/* Тыква в углу экрана */
+/* Паутина в углах экрана */
+.hw-cobweb-screen {
+    position: fixed;
+    width: 120px;
+    height: 120px;
+    pointer-events: none;
+    z-index: 9997;
+    opacity: 0.9;
+    color: #ea580c; /* Яркий оранжевый */
+}
+.hw-cobweb-tl { top: 0; left: 0; }
+.hw-cobweb-tr { top: 0; right: 0; transform: scaleX(-1); }
+.hw-cobweb-bl { bottom: 0; left: 0; transform: scaleY(-1); }
+.hw-cobweb-br { bottom: 0; right: 0; transform: scale(-1); }
+
+/* Паутина на карточках */
+[data-halloween="on"] .project-card,
+[data-halloween="on"] .card {
+    position: relative;
+    overflow: hidden;
+    transition: box-shadow 0.3s, border-color 0.3s;
+}
+[data-halloween="on"] .project-card:hover,
+[data-halloween="on"] .card:hover {
+    box-shadow: 0 0 20px rgba(234, 88, 12, 0.3), 4px 4px 0 var(--lab-fg);
+    border-color: var(--color-brand-500);
+}
+[data-halloween="on"] .project-card::before,
+[data-halloween="on"] .card::before {
+    content: '';
+    position: absolute;
+    top: -5px; right: -5px;
+    width: 80px; height: 80px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ea580c' stroke-width='1.5'%3E%3Cpath d='M0 0 L24 0 L24 24 M0 0 L0 24 M0 0 L24 24 M0 0 L12 2 M0 0 L2 12 M0 0 L18 6 M0 0 L6 18'/%3E%3C/svg%3E");
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0.8; /* Ярко и заметно */
+    pointer-events: none;
+    z-index: 10;
+}
+
+/* ── ПОДГЛЯДЫВАЮЩИЕ ЭЛЕМЕНТЫ ────────────────────────────── */
+
+/* Тыква в углу */
 .hw-peek {
     position: fixed;
-    bottom: -20px;
+    bottom: -10px;
     z-index: 9998;
     pointer-events: none;
     animation: hw-peek-bob 3s ease-in-out infinite;
+    filter: drop-shadow(0 0 10px rgba(234, 88, 12, 0.6));
 }
 .hw-peek--right { right: 20px; transform-origin: bottom right; }
-.hw-peek--left  { left: 20px; transform-origin: bottom left; }
 
 @keyframes hw-peek-bob {
     0%, 100% { transform: translateY(0) rotate(0deg); }
     50%       { transform: translateY(-10px) rotate(5deg); }
 }
 
-/* Глаза в темноте (для футера) */
-.hw-eyes {
-    display: inline-block;
-    width: 20px; height: 10px;
-    position: relative;
+/* Призрак слева (глаза) */
+.hw-peek-ghost {
+    position: fixed;
+    top: 30%;
+    left: -10px;
+    z-index: 9998;
+    pointer-events: none;
+    animation: hw-ghost-float 4s ease-in-out infinite;
+    opacity: 0.8;
 }
-.hw-eyes::before, .hw-eyes::after {
-    content: '';
-    position: absolute;
-    width: 6px; height: 6px;
-    border-radius: 50%;
-    background: #f97316;
-    box-shadow: 0 0 6px #f97316;
-    animation: hw-blink 4s infinite;
-}
-.hw-eyes::before { left: 0; }
-.hw-eyes::after  { right: 0; }
-@keyframes hw-blink {
-    0%, 90%, 100% { transform: scaleY(1); }
-    95%           { transform: scaleY(0.1); }
+@keyframes hw-ghost-float {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50%      { transform: translateY(-20px) scale(1.05); }
 }
 
-/* Летучая мышь на навигации (висит сверху) */
+/* Летучая мышь на навигации */
 .hw-nav-bat {
     position: absolute;
     top: 100%;
-    left: 20%;
-    width: 30px;
-    height: 30px;
-    color: var(--color-brand-600);
+    left: 15%;
+    width: 35px;
+    height: 35px;
+    color: var(--color-brand-500);
     animation: hw-swing 4s ease-in-out infinite;
     transform-origin: top center;
     pointer-events: none;
     z-index: 100;
+    filter: drop-shadow(0 0 5px rgba(234, 88, 12, 0.5));
 }
 @keyframes hw-swing {
-    0%, 100% { transform: rotate(-10deg); }
-    50%       { transform: rotate(10deg); }
+    0%, 100% { transform: rotate(-15deg); }
+    50%       { transform: rotate(15deg); }
 }
 
-/* Оглушительный неон на кнопке тыквы */
-[data-halloween="on"] .hw-toggle:hover {
-    box-shadow: 0 0 15px rgba(234, 88, 12, 0.6);
+/* Туман / Виньетка по краям экрана */
+[data-halloween="on"] body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    box-shadow: inset 0 0 100px rgba(0,0,0,0.8);
+    z-index: 9990;
 }
+
+/* ── ПРОЧИЕ ФИШКИ ────────────────────────────────────────── */
 
 /* Летучая мышь летающая (пасхалка) */
 @keyframes hw-bat-fly {
@@ -134,8 +179,8 @@
 .hw-sticker {
     position: absolute;
     pointer-events: none;
-    color: var(--color-brand-600);
-    filter: drop-shadow(2px 2px 0 rgba(0,0,0,.12));
+    color: var(--color-brand-500);
+    filter: drop-shadow(2px 2px 0 rgba(0,0,0,.2));
     z-index: 2;
 }
 .hw-sticker--top-right    { top: -18px; right: -18px; transform: rotate(12deg); }
@@ -162,10 +207,11 @@
 .hw-banner__link:hover { text-decoration: underline; }
 
 @media (prefers-reduced-motion: reduce) {
-    .hw-bat-fly, .hw-peek, .hw-eyes::before, .hw-eyes::after, .hw-nav-bat { display: none; animation: none; }
+    .hw-bat-fly, .hw-peek, .hw-peek-ghost, .hw-nav-bat { display: none; animation: none; }
 }
 
 @media (max-width: 899px) {
     .hw-sticker[data-heavy] { display: none; }
-    .hw-peek { display: none; }
+    .hw-peek, .hw-peek-ghost, .hw-cobweb-screen { display: none; }
+    [data-halloween="on"] body::after { box-shadow: inset 0 0 50px rgba(0,0,0,0.6); }
 }
