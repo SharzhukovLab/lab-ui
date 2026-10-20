@@ -264,3 +264,188 @@
     /* Отключаем тяжелые тени на мобильных для производительности */
     [data-halloween="on"] .card, [data-halloween="on"] .stack-item { box-shadow: 2px 2px 0 #8b5cf6 !important; }
 }
+
+/* ============================================================
+   AGGRESSIVE BLOCK OVERRIDES (for Tailwind hardcoded classes)
+   ============================================================ */
+
+/* Карточки, рамки и тени */
+[data-halloween="on"] .border-blue-600,
+[data-halloween="on"] .border-blue-500,
+[data-halloween="on"] [class*="border-brand"],
+[data-halloween="on"] .card,
+[data-halloween="on"] .brutal-card,
+[data-halloween="on"] .project-card,
+[data-halloween="on"] article {
+    border-color: #ea580c !important;
+    box-shadow: 4px 4px 0 #7c3aed !important;
+    transition: all 0.3s ease;
+}
+
+[data-halloween="on"] .card:hover,
+[data-halloween="on"] .brutal-card:hover,
+[data-halloween="on"] .project-card:hover,
+[data-halloween="on"] article:hover,
+[data-halloween="on"] .stack-item:hover {
+    box-shadow: 6px 6px 0 #7c3aed, 0 0 20px rgba(234, 88, 12, 0.4) !important;
+    transform: translate(-2px, -2px);
+}
+
+/* Кнопки */
+[data-halloween="on"] .bg-blue-600,
+[data-halloween="on"] .bg-blue-500,
+[data-halloween="on"] .btn-primary,
+[data-halloween="on"] .brutal-btn--primary {
+    background-color: #ea580c !important;
+    border-color: #ea580c !important;
+    color: #ffffff !important;
+}
+
+[data-halloween="on"] .bg-blue-600:hover,
+[data-halloween="on"] .btn-primary:hover,
+[data-halloween="on"] .brutal-btn--primary:hover {
+    background-color: #c2410c !important;
+    box-shadow: 0 0 15px rgba(234, 88, 12, 0.6), 4px 4px 0 #7c3aed !important;
+    transform: translate(-2px, -2px);
+}
+
+/* Текст и иконки */
+[data-halloween="on"] .text-blue-600,
+[data-halloween="on"] .text-blue-500 {
+    color: #f97316 !important;
+}
+
+/* Плашки (// STACK, // OPEN SOURCE) */
+[data-halloween="on"] .eyebrow,
+[data-halloween="on"] .badge,
+[data-halloween="on"] [class*="border-blue"][class*="text"] {
+    border-color: #ea580c !important;
+    color: #ea580c !important;
+    box-shadow: 2px 2px 0 #7c3aed !important;
+}
+
+/* Терминал */
+[data-halloween="on"] .terminal-window,
+[data-halloween="on"] .terminal,
+[data-halloween="on"] [class*="terminal"] {
+    border-color: #ea580c !important;
+    box-shadow: 8px 8px 0 rgba(124, 58, 237, 0.5), 0 0 30px rgba(234, 88, 12, 0.2) !important;
+}
+
+/* ============================================================
+   MODERN FOOTER & FIXES (Halloween Edition)
+   ============================================================ */
+
+/* 1. Глобальный фикс для карточек в футере (иконки, блоки) */
+[data-halloween="on"] .ecosystem-card,
+[data-halloween="on"] footer .border-blue-600,
+[data-halloween="on"] footer .border-blue-500,
+[data-halloween="on"] footer [class*="border-blue"] {
+    border-color: #ea580c !important;
+    background-color: #1c1917 !important;
+    box-shadow: 4px 4px 0 #7c3aed !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+[data-halloween="on"] .ecosystem-card:hover,
+[data-halloween="on"] footer .border-blue-600:hover {
+    box-shadow: 0 0 20px rgba(234, 88, 12, 0.4), 6px 6px 0 #7c3aed !important;
+    transform: translate(-2px, -2px);
+}
+
+/* Иконки в футере */
+[data-halloween="on"] footer svg.text-blue-600,
+[data-halloween="on"] footer svg.text-blue-500,
+[data-halloween="on"] .ecosystem-card svg {
+    color: #f97316 !important;
+}
+
+/* 2. Newsletter блок (// NEWSLETTER) */
+[data-halloween="on"] footer [class*="newsletter"],
+[data-halloween="on"] .newsletter-box {
+    border-color: #7c3aed !important; /* Фиолетовая рамка */
+    background-color: #0c0a09 !important;
+    box-shadow: inset 0 0 20px rgba(124, 58, 237, 0.1) !important;
+}
+
+/* Поле ввода в рассылке */
+[data-halloween="on"] footer input[type="email"] {
+    background-color: #1c1917 !important;
+    border-color: #ea580c !important;
+    color: #f5f5f4 !important;
+    box-shadow: inset 0 0 5px rgba(234, 88, 12, 0.2) !important;
+}
+[data-halloween="on"] footer input[type="email"]:focus {
+    outline: none;
+    box-shadow: 0 0 15px rgba(234, 88, 12, 0.5), inset 0 0 5px rgba(234, 88, 12, 0.3) !important;
+}
+
+/* 3. Ссылки в футере */
+[data-halloween="on"] footer a {
+    color: #a8a29e;
+    transition: color 0.2s, text-shadow 0.2s;
+}
+[data-halloween="on"] footer a:hover {
+    color: #f97316 !important;
+    text-shadow: 0 0 8px rgba(249, 115, 22, 0.6);
+}
+
+/* 4. Разделители в футере */
+[data-halloween="on"] footer hr,
+[data-halloween="on"] footer .border-t,
+[data-halloween="on"] footer .border-b {
+    border-color: rgba(124, 58, 237, 0.3) !important;
+}
+
+/* 5. Неоновое свечение для заголовков (например, "Discord.") */
+[data-halloween="on"] h1,
+[data-halloween="on"] h2,
+[data-halloween="on"] .section-title {
+    text-shadow: 0 0 20px rgba(234, 88, 12, 0.3);
+}
+
+/* 6. Стильный эффект наведения на кнопки "ALL POSTS / ALL PROJECTS" */
+[data-halloween="on"] .btn-outline,
+[data-halloween="on"] [class*="border-blue"][class*="px-"] {
+    border-color: #7c3aed !important;
+    color: #7c3aed !important;
+    box-shadow: 2px 2px 0 #ea580c !important;
+}
+[data-halloween="on"] .btn-outline:hover,
+[data-halloween="on"] [class*="border-blue"][class*="px-"]:hover {
+    background-color: #7c3aed !important;
+    color: #fff !important;
+    box-shadow: 0 0 15px rgba(124, 58, 237, 0.6) !important;
+}
+
+/* 7. Плавный градиент на фоне футера */
+[data-halloween="on"] footer {
+    background: linear-gradient(180deg, #0c0a09 0%, #1c1917 50%, #0c0a09 100%) !important;
+    border-top: 2px solid #ea580c !important;
+    position: relative;
+    overflow: hidden;
+}
+
+/* 8. Парящие тыквы (фишка для футера) */
+[data-halloween="on"] footer::before {
+    content: '🎃';
+    position: absolute;
+    top: 20%;
+    right: 5%;
+    font-size: 80px;
+    opacity: 0.05;
+    transform: rotate(15deg);
+    pointer-events: none;
+    z-index: 0;
+}
+[data-halloween="on"] footer::after {
+    content: '🦇';
+    position: absolute;
+    bottom: 10%;
+    left: 5%;
+    font-size: 60px;
+    opacity: 0.05;
+    transform: rotate(-15deg);
+    pointer-events: none;
+    z-index: 0;
+}
