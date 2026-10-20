@@ -26,13 +26,31 @@ document.addEventListener('DOMContentLoaded', function () {
     if (document.documentElement.getAttribute('data-halloween') !== 'on') return;
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-    // 1. Стая мышей при первом заходе
+    // 1. Подглядывающая тыква в углу
+    if (!document.querySelector('.hw-peek')) {
+        var peek = document.createElement('div');
+        peek.className = 'hw-peek hw-peek--right';
+        peek.innerHTML = '<svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#ea580c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="14" rx="7" ry="6"/><path d="M12 8v-2M12 6c-1-1-2-1-3 0"/><path d="M9 12l1 1-1 1M15 12l-1 1 1 1M11 16h2"/></svg>';
+        document.body.appendChild(peek);
+    }
+
+    // 2. Летучая мышь на навигации
+    var nav = document.querySelector('.brutal-nav') || document.querySelector('.lab-nav');
+    if (nav && !nav.querySelector('.hw-nav-bat')) {
+        var bat = document.createElement('div');
+        bat.className = 'hw-nav-bat';
+        bat.innerHTML = '<svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6c-1 0-2 1-2 3l-4-2 1 4-3 1 3 2 2 3 3-3 3 3 2-3 3-2-3-1 1-4-4 2c0-2-1-3-2-3z"/></svg>';
+        nav.style.position = 'relative';
+        nav.appendChild(bat);
+    }
+
+    // 3. Стая мышей при первом заходе
     if (!sessionStorage.getItem('hw-bats-shown')) {
         sessionStorage.setItem('hw-bats-shown', '1');
         setTimeout(function () { spawnBat(); setTimeout(spawnBat, 400); setTimeout(spawnBat, 900); }, 1200);
     }
 
-    // 2. Konami code (Candy rain)
+    // 4. Konami code (Candy rain)
     let konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
     let konamiIndex = 0;
     document.addEventListener('keydown', function(e) {
@@ -49,15 +67,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
     console.log(
         '%c🎃 Happy Halloween! %cTry the Konami code...',
-        'font-size:16px;color:#7c3aed;font-weight:bold;',
-        'color:#f97316;'
+        'font-size:16px;color:#ea580c;font-weight:bold;',
+        'color:#7c3aed;'
     );
 });
 
 function spawnBat() {
     var b = document.createElement('div');
     b.className = 'hw-bat-fly';
-    b.innerHTML = '<svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="#7c3aed" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6c-1 0-2 1-2 3l-4-2 1 4-3 1 3 2 2 3 3-3 3 3 2-3 3-2-3-1 1-4-4 2c0-2-1-3-2-3z"/></svg>';
+    b.innerHTML = '<svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="#ea580c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6c-1 0-2 1-2 3l-4-2 1 4-3 1 3 2 2 3 3-3 3 3 2-3 3-2-3-1 1-4-4 2c0-2-1-3-2-3z"/></svg>';
     document.body.appendChild(b);
     setTimeout(function () { b.remove(); }, 6500);
 }
